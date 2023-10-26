@@ -1,0 +1,297 @@
+#container {
+    display: none;
+    transition: opacity 800ms;
+    background: white;
+    z-index: -1;
+}
+
+#container > .wrapper {
+    max-width: 1000px;
+    display: block;
+    margin: 0 auto;
+    background: white;
+    padding: 5px 10px;
+}
+
+#container.active {
+    display: initial;
+    z-index: 1000;
+}
+
+#menu-container {
+    display: none;
+    width: 100%;
+    text-align: center;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+#menu-container.active {
+    display: block;
+}
+
+.menu-item {
+    background: #ffffff;
+    display: block;
+    color: black;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    border: 1px dashed;
+}
+
+.menu-item:hover .title {
+    text-decoration: underline;
+}
+
+.menu-item img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    max-width: 500px;
+    border-radius: 5px;
+}
+.menu-item > div {
+    text-align: left;
+}
+
+
+.menu-item .title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+
+body {
+    font-family: 'Roboto';
+    color: #393939;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: .005em;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    margin-top: 50px;
+    font-weight: bold;
+    line-height: 50px;
+}
+
+#container img {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+/*MENU BUTTON=======================================================*/
+.liqued-button {
+    position: fixed;
+    right: 50px;
+    bottom: 0;
+    z-index: 1000;
+}
+
+#menu-button:hover {
+    cursor: pointer;
+}
+
+
+/*BALL*/
+.ball {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    position: relative;
+    background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
+}
+
+.ball:before {
+    content: "";
+    position: absolute;
+    top: 1%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+    background: radial-gradient(circle at top, white, rgba(255, 255, 255, 0) 58%);
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    z-index: 2;
+}
+
+.ball:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border-radius: 100%;
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+    z-index: 2;
+    -webkit-transform: rotateZ(-30deg);
+    transform: rotateZ(-30deg);
+}
+
+.ball .shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+    -webkit-transform: rotateX(90deg) translateZ(-160px);
+    transform: rotateX(90deg) translateZ(-160px);
+    z-index: 1;
+}
+
+.ball.plain {
+    background: black;
+}
+
+.ball.plain:before, .ball.plain:after {
+    display: none;
+}
+
+.ball.bubble {
+    /*background: radial-gradient(circle at 50% 55%, rgba(240, 245, 255, 0.9), rgba(240, 245, 255, 0.9) 40%, rgba(225, 238, 255, 0.8) 60%, rgba(43, 130, 255, 0.4));*/
+    /*background-image: url("./images/jan.jpeg");*/
+    background-size: contain;
+    -webkit-animation: bubble-anim 2s ease-out infinite;
+    animation: bubble-anim 2s ease-out infinite;
+}
+
+.ball.bubble > #jan-button {
+    transition: opacity 800ms;
+    border-radius: 50%;
+    opacity: 0.5;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.ball.bubble:hover #jan-button {
+    opacity: 0.9;
+}
+
+#jan-button.active {
+    opacity: 0.9 !important;
+}
+
+.ball.bubble:before {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    height: 80%;
+    width: 40%;
+    background: radial-gradient(circle at 130% 130%, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.8) 58%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
+    -webkit-transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
+    transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
+}
+
+.ball.bubble:after {
+    display: block;
+    background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 74%, white 80%, white 84%, rgba(255, 255, 255, 0) 100%);
+}
+
+.stage {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 20px;
+    -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+    -ms-perspective: 1200px;
+    -o-perspective: 1200px;
+    perspective: 1200px;
+    -webkit-perspective-origin: 50% 50%;
+    -moz-perspective-origin: 50% 50%;
+    -ms-perspective-origin: 50% 50%;
+    -o-perspective-origin: 50% 50%;
+    perspective-origin: 50% 50%;
+}
+
+
+@-webkit-keyframes bubble-anim {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    20% {
+        -webkit-transform: scaleY(0.95) scaleX(1.05);
+        transform: scaleY(0.95) scaleX(1.05);
+    }
+
+    48% {
+        -webkit-transform: scaleY(1.1) scaleX(0.9);
+        transform: scaleY(1.1) scaleX(0.9);
+    }
+
+    68% {
+        -webkit-transform: scaleY(0.98) scaleX(1.02);
+        transform: scaleY(0.98) scaleX(1.02);
+    }
+
+    80% {
+        -webkit-transform: scaleY(1.02) scaleX(0.98);
+        transform: scaleY(1.02) scaleX(0.98);
+    }
+
+    97%, 100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes bubble-anim {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    20% {
+        -webkit-transform: scaleY(0.95) scaleX(1.05);
+        transform: scaleY(0.95) scaleX(1.05);
+    }
+
+    48% {
+        -webkit-transform: scaleY(1.1) scaleX(0.9);
+        transform: scaleY(1.1) scaleX(0.9);
+    }
+
+    68% {
+        -webkit-transform: scaleY(0.98) scaleX(1.02);
+        transform: scaleY(0.98) scaleX(1.02);
+    }
+
+    80% {
+        -webkit-transform: scaleY(1.02) scaleX(0.98);
+        transform: scaleY(1.02) scaleX(0.98);
+    }
+
+    97%, 100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+
+.jan {
+    background: url("./images/jan.jpeg");
+}

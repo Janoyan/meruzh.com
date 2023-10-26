@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title>6 tips to speed up Node.JS Apps development</title>
+    <meta itemprop="name" content="6 tips to speed up Node.JS Apps development"/>
+    <meta itemprop="url" content="https://meruzh.com/articles/6-tips-to-speed-up-node-js-apps-development"/>
+    <meta itemprop="description" content="This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren't only six tips, of course, I've only listed the six most important ones according to my experience."/>
+    <meta itemprop="image" content="/images/node-js.jpg"/>
+    <meta itemprop="author" content="Meruzh Janoyan"/>
+    <meta itemprop="headline" content="6 tips to speed up Node.JS Apps development"/>
+
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1">
+    <script src="/script.js?jan_v=1"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Six tips to speed up Node.js Apps development</h1>
+        <p>This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren't only six tips, of course, I've only listed the six most important ones according to my experience.</p>
+
+        <h2>Tip 1. Use TypeScript</h2>
+        <p>TypeScript extends JavaScript by adding types to it. It saves you time by catching errors and providing fixes before you run code. It may seem that using TypeScript will increase development time, but you will spend more time on debugging unless you go with TypeScript.</p>
+
+        <img alt="" src="/images/use_typescript.gif">
+
+        <p>You can take advantage of these benefits when using TypeScript:</p>
+
+        <ul>
+            <li>Type definitions allow you to quickly fix things such as typos,
+                incorrect assignments, and other mistakes made because of inattentive code changes.
+            </li>
+            <li>
+                Awesome property suggestions and autocomplete ability. It lets
+                code editors to suggest the list of available properties, methods, and even enum values based on defined
+                types.
+            </li>
+            <li>
+                Type enforcement can help you to correctly structure the code.
+            </li>
+        </ul>
+
+        <p>Note: Avoid using the "type any" option because this renders using TypeScript meaningless.</p>
+
+        <h2>Tip 2. Have predefined classes for possible errors</h2>
+        <p>It's important to have a good error handler to notice and fix all possible errors. Your app should have a unified structure of the error object that will include all the necessary data related to the error.</p>
+        <img alt="" src="/images/error_handling.gif">
+
+        <p>One of the solutions for this is to have a base error class, that will extend node.js native error class, and will include all the properties and methods you need. Afterward, it's necessary to create error classes for possible types of errors by extending BaseError class. In the diagram below, you can see an example of such a hierarchy, where for each http response code there is a defined separate error class.</p>
+        <p>One of the solutions for this is to have a base error class, that will extend node.js native error class, and will include all the properties and methods you need. Afterward, it's necessary to create error classes for possible types of errors by extending BaseError class. In the diagram below, you can see an example of such a hierarchy, where for each http response code there is a defined separate error class.</p>
+
+        <img alt="" src="/images/errors_tree.png">
+
+        <p>Here are the code examples of implementation for such classes:</p>
+
+        <h3>Base Error Class</h3>
+        <img alt="" src="/images/base_errors.png">
+
+        <h3>NotFoundError Class</h3>
+        <img alt="" src="/images/not_found_error.png">
+
+        <p>After having these classes, whenever you want to throw an error, you need to use instances of them.</p>
+        <p>Also, it's required to have an error handler function that can understand error types and do appropriate action based on it. As an example, let's look at the following error handler which is an express middleware. It responds with either current or an internal error object, based on error instances. </p>
+
+        <h3>Error handler</h3>
+        <img alt="" src="/images/error_handler.png">
+
+        <h2>Tip 3. Dockerize applications</h2>
+        <p>It's very inconvenient to maintain current modern applications without having docker integrated. Docker solves lots of things related to application scaling, deployment and more.</p>
+        <img alt="" src="/images/node_whales.gif">
+
+        <p>Here are some of the benefits you will get if you integrate docker into your apps:</p>
+
+        <ul>
+            <li>Your application will always run in the same environment. That
+                means no need to handle environment-specific cases (OS type, version, etc.). The justification "works in my
+                local environment" - disappears.
+            </li>
+            <li>Your application is encapsulated into the container with all the
+                necessary software to run it. This is helpful when you want to set up and run a project without installing a
+                lot of things into your local environment.
+            </li>
+            <li>Easy management of versions of dependencies. For example, for
+                updating the OS version or node.js version of containers you just need to change a single number in your
+                Dockerfile.
+            </li>
+            <li>Easy to scale. You can scale your application by having multiple
+                instances of it. Also, you gain the option to use Kubernetes.
+            </li>
+            <li>It's easy to integrate CI/CD. You can run your application
+                anywhere you want, including virtual machines of CI/CDs.
+            </li>
+        </ul>
+
+        <h2>Tip 4. Write automation tests</h2>
+        <p>Be it unit tests, integration tests or whatever else, it's great to have automation tests implemented. Automation tests are your reliable friends during hard times. There are lots of cases that cover automation tests, but I'm going to describe it from the point of view of a developer.</p>
+        <img alt="" src="/images/automation_tests.gif">
+
+        <p>My suggestion is to set up and start implementing tests from the first day of the project. Previously, I was of the opinion that automation tests are not important and was classifying them as secondary jobs. Now, I understand that it's one of the best things to protect you from yourself.</p>
+
+        <p>Everybody knows how productive people are when they start working but how tired they get at the end of the working day. When you are tired, you can make simple mistakes, because of this later on you will spend a lot of time debugging and finding issues. Usually, we finish our tasks by the end of the working day but by then we are too tired to test manually all the related functionality.</p>
+
+        <p>By having automation tests implemented, you can run tests every time after adding a new feature or when anything in the code is changed. It's a great way to make sure that everything is working correctly and other functionalities are not affected after changes. Even if something was broken and tests are failing, you can easily find the problem and fix it.</p>
+
+        <img alt="" src="/images/endpoint_tests.png">
+
+        <p>I know it's hard to make yourself write tests each time after adding new features or making changes in the code, but it is the best way to protect yourself from the tired version of you.</p>
+
+        <h2>Tip 5. Integrate CI/CD</h2>
+        <p>Another thing that facilitates your work is CI/CD set up. This will let you stay away from the server command line and will reduce time spent on deployments.</p>
+        <img alt="" src="/images/cicd.gif">
+
+        <p>My suggestion is to set up CI/CD for all the environments (testing, staging, prod, etc.) you have. Run all kinds of tests you have each time something is being pushed to the git repository. Setup specific git branches or tags for making automatic deployment.</p>
+        <p>Another benefit of it is auto-generated environment variable files (.env). Usually, CI/CD platforms have the possibility to keep secrets like database password, API Key, etc. For example, CircleCI has a section called Contexts which is for keeping environment variables and secrets, Pipelines of Azure have secret files for the same purpose and so on...</p>
+
+        <h2>Tip 6. Use reliable validator</h2>
+        <p>I can't think of any application that doesn't receive and process external data. All applications have input data, be it Rest API, daemon service or any other. A good data validator is required to ensure the smooth operation of your service.</p>
+        <img alt="" src="/images/reliable_validator.gif">
+        <p>As an example let's take a Rest API app. The app receives some data from clients, processes it and responds with appropriate response data. In the Rest API case, clients can pass data to endpoints in various ways (query, body, headers, etc..) and it's important for the app to process the request data only if it is correct.</p>
+
+        <p>There are various libraries which can cover this problem and one of them is joi. It's an awesome library with lots of functionality.</p>
+        <img alt="" src="/images/controller_validator_router.png">
+
+        <p>The diagram above shows the validation mechanism of the Rest API app using JOI as a middleware. The middleware receives data from clients, validates it, corrects it in some cases and, afterward passes it to the next middleware. In case of incorrect data, it throws validation errors.</p>
+
+        <h2>Summary</h2>
+        <p>The tips I shared with you are just things that I understood from my own experience and I'm sure that they are not ideal solutions for everyone. After all, each project has its own requirements, even solutions different from the standard. Hopefully, this article will help you to facilitate the development process and free up time for other things.</p>
+    </div>
+</div>
+
+</body>
+</html>
