@@ -10,49 +10,7 @@ var menuItems = [
     image: '/images/node-js.jpg',
     link: '/articles/6-tips-to-speed-up-node-js-apps-develop',
     dateString: 'Dec 16, 2020'
-  },
-  {
-    title: 'Six tips to speed up Node.js Apps development',
-    description: 'This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren\'t only six tips, of course, I\'ve only listed the six most important ones according to my experience.',
-    image: '/images/node-js.jpg',
-    link: '/articles/6-tips-to-speed-up-node-js-apps-develop',
-    dateString: 'Dec 16, 2020'
-  },
-  {
-    title: 'Six tips to speed up Node.js Apps development',
-    description: 'This article highlight years. In important ones according to my experience.',
-    image: '/images/node-js.jpg',
-    link: '/articles/6-tips-to-speed-up-node-js-apps-develop',
-    dateString: 'Dec 16, 2020'
-  },
-  {
-    title: 'Six tips to speed up Node.js Apps development',
-    description: 'This article highlights the six most important tips I have learned by analyzing my previous projects from tights the six most important tips I have learned by analyzing my previous projects from tights the six most important tips I have learned by analyzing my previous projects from tights the six most important tips I have learned by analyzing my previous projects from tights the six most important tips I have learned by analyzing my previous projects from tights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren\'t only six tips, of course, I\'ve only listed the six most important ones according to my experience.',
-    image: '/images/node-js.jpg',
-    link: '/articles/6-tips-to-speed-up-node-js-apps-develop',
-    dateString: 'Dec 16, 2020'
-  },
-  {
-    title: 'Six tips to speed up Node.js Apps development',
-    description: 'This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren\'t only six tips, of course, I\'ve only listed the six most important ones according to my experience.',
-    image: '/images/node-js.jpg',
-    link: '/articles/6-tips-to-speed-up-node-js-apps-develop',
-    dateString: 'Dec 16, 2020'
-  },
-  {
-    title: 'Six tips to speed up Node.js Apps development',
-    description: 'This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren\'t only six tips, of course, I\'ve only listed the six most important ones according to my experience.',
-    image: '/images/node-js.jpg',
-    link: '/articles/6-tips-to-speed-up-node-js-apps-develop',
-    dateString: 'Dec 16, 2020'
-  },
-  {
-    title: 'Six tips to speed up Node.js Apps development',
-    description: 'This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren\'t only six tips, of course, I\'ve only listed the six most important ones according to my experience.',
-    image: '/images/node-js.jpg',
-    link: '/articles/6-tips-to-speed-up-node-js-apps-develop',
-    dateString: 'Dec 16, 2020'
-  },
+  }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
