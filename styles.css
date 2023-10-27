@@ -32,7 +32,7 @@
 
 .menu-item {
     background: #ffffff;
-    display: block;
+    display: inline-block;
     color: black;
     max-width: 500px;
     margin: 20px auto;
@@ -65,7 +65,10 @@
     font-size: 24px;
 }
 
-
+.menu-item .description {
+    height: 200px;
+    overflow: scroll;
+}
 body {
     font-family: 'Roboto';
     color: #393939;
@@ -98,7 +101,7 @@ h1, h2, h3 {
 
 
 /*MENU BUTTON=======================================================*/
-.liqued-button {
+#liqued-button {
     position: fixed;
     right: 50px;
     bottom: 0;
@@ -192,6 +195,10 @@ h1, h2, h3 {
 
 #jan-button.active {
     opacity: 0.9 !important;
+}
+
+#liqued-button.hidden {
+    display: none;
 }
 
 .ball.bubble:before {
