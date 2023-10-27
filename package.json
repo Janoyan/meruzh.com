@@ -4,7 +4,8 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "serve": "pm2 start && pm2 logs"
+    "serve": "pm2 start && pm2 logs",
+    "version": "./version.sh"
   },
   "repository": {
     "type": "git",
