@@ -1,0 +1,23 @@
+{
+  "name": "meruzh.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "serve": "pm2 start && pm2 logs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Janoyan/meruzh.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Janoyan/meruzh.com/issues"
+  },
+  "homepage": "https://github.com/Janoyan/meruzh.com#readme",
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "pm2": "^5.3.0"
+  }
+}
