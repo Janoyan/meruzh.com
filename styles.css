@@ -24,6 +24,7 @@
     text-align: center;
     overflow-y:scroll;
     overflow-x:hidden;
+    margin: 2px;
 }
 
 #menu-container.active {
@@ -41,7 +42,7 @@
 
 .menu-item:hover {
     cursor: pointer;
-    border: 1px dashed;
+    border: 3px dashed;
 }
 
 .menu-item:hover .title {
