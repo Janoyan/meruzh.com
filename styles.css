@@ -51,7 +51,7 @@
 
 .menu-item img {
     width: 100%;
-    max-height: 300px;
+    height: 300px;
     object-fit: cover;
     max-width: 500px;
     border-radius: 5px;
@@ -64,6 +64,7 @@
 .menu-item .title {
     font-weight: bold;
     font-size: 24px;
+    height: 60px;
 }
 
 .menu-item .description {
@@ -302,4 +303,13 @@ h1, h2, h3 {
 
 .jan {
     background: url("./images/jan.jpeg");
+}
+
+
+span.code {
+    font-family: 'Courier New', monospace;
+    background: #dcdcdc;
+    border-radius: 5px;
+    border: 1px rgb(197, 197, 197) solid;
+    font-style: initial;
 }

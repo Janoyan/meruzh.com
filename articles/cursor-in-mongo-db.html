@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGJSF7C84Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JGJSF7C84Y');
+    </script>
+
+    <title>Cursor in MongoDB</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2019-09-27T20:00:00.000Z"/>
+    <meta name="title" content="Cursor in MongoDB"/>
+    <meta property="og:title" content="Cursor in MongoDB"/>
+    <meta name="description" content="In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor."/>
+    <meta property="og:description" content="In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor."/>
+    <meta property="og:url" content="https://meruzh.com/articles/cursor-in-mongo-db"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/cursor-in-mongo-db"/>
+    <meta property="og:image" content="/images/cursor-in-mongodb.png"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Cursor in MongoDB"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description" content="In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor."/>
+    <meta name="twitter:image:src" content="/images/cursor-in-mongodb.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+
+
+
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1698578095">
+    <script src="/script.js?jan_v=1698578095"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Cursor in MongoDB</h1>
+        <p>In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor. There’re a lot of cases when service is connected to the database but when requesting data from server it hangs and doesn’t get any response or even error exceptions.</p>
+
+        <h2>So what is the cursor?</h2>
+        <p>Cursor is a prepared set of documents that contains documents matching current query criteria. In other words when we call <span class="code">.find()</span> method in the server is creating that kind of virtual collection and cursor is pointing to start element of that collection.</p>
+
+        <img alt="" src="/images/cursor-in-mongodb-anim.gif">
+        <p>
+            With the <span class="code">.find()</span> query there is a possibility to send an option that will tell the server how many documents should be sent back to the client on each batch. That option is called <span class="code">batchSize</span>. So after the first <span class="code">.next()</span> method call, server returns to the client set of documents. Returned documents quantity is equal to <span class="code">batchSize</span> which was set on querying documents or its default value. After that when all cached documents were taken by the client it is asking the server for the next batch. And this process continues until all the batches were taken by the client.
+        </p>
+
+        <h2>Frequently encountered problems</h2>
+        <p>One of the cause of a problem could be calling <span class="code">.find()</span> with sort command. Actually it is not a problem if the field or the fields by which server should sort documents were indexed.</p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -10,6 +10,13 @@ var menuItems = [
     image: '/images/node-js.jpg',
     link: '/articles/6-tips-to-speed-up-node-js-apps-develop',
     dateString: 'Dec 16, 2020'
+  },
+  {
+    title: 'Cursor in MongoDB',
+    description: 'In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor.',
+    image: '/images/cursor-in-mongodb.png',
+    link: '/articles/cursor-in-mongo-db',
+    dateString: 'Sep 28, 2019'
   }
 ];
 

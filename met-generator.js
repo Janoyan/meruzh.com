@@ -1,8 +1,8 @@
-const title = 'Six tips to speed up Node.js Apps development';
-const description = "This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren't only six tips, of course, I've only listed the six most important ones according to my experience.";
-const publishedTime = new Date('12-16-2020').toISOString();
-const url = 'https://meruzh.com/articles/6-tips-to-speed-up-node-js-apps-develop';
-const imageUrl = '/images/node-js.jpg';
+const title = 'Cursor in MongoDB';
+const description = "In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor.";
+const publishedTime = new Date('09-28-2019').toISOString();
+const url = 'https://meruzh.com/articles/cursor-in-mongo-db';
+const imageUrl = '/images/cursor-in-mongodb.png';
 
 const result = `
     <title>${title}</title>
@@ -16,7 +16,7 @@ const result = `
     <meta name="description" content="${description}"/>
     <meta property="og:description" content="${description}"/>
     <meta property="og:url" content="${url}"/>
-    <meta property="al:web:url"content="${url}"/>
+    <meta property="al:web:url" content="${url}"/>
     <meta property="og:image" content="${imageUrl}"/>
     <meta property="article:author" content="Meruzh Janoyan"/>
     <meta name="author" content="Meruzh Janoyan"/>
