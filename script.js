@@ -45,6 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ${document.body.innerHTML}`;
 
+  addAuthorInfo();
+
   document.querySelector('#menu-button').addEventListener('click', () => {
     if (menuOpen && !window.alwaysOpen) {
       closeMenu();
@@ -82,3 +84,53 @@ function closeMenu() {
   menuOpen = false;
 }
 
+
+function addAuthorInfo() {
+  const publishedTimeString = document.querySelector('meta[property="article:published_time"]')?.getAttribute('content');
+  if (!publishedTimeString) {
+    return;
+  }
+
+  const lang = document.querySelector('meta[http-equiv="content-language"]')?.getAttribute('content');
+  const date = new Date(publishedTimeString);
+  const formattedDate = lang !== 'hy' ? date.toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }) : formatArmDate(date);
+  const yearDiff = new Date().getFullYear() - date.getFullYear();
+  const diffText = yearDiff > 1 ? `${yearDiff} years ago <span>(${formattedDate})` : yearDiff === 1 ? `a year ago <span>(${formattedDate})` : '';
+  const diffTextArm = yearDiff > 0 ? `${yearDiff} տարի առաջ <span>(${formattedDate})` : '';
+
+  const authorInfoDiv = lang === 'hy' ? `
+    <div id="author-info-container">
+      <p>Հեղինակ՝ <a target="_blank" href="https://linkedin.com/in/meruzh">Մերուժ Ջանոյան</a>, հրապարակվել է ${yearDiff > 0 ? diffTextArm : `${formattedDate}`}</p>
+    </div>` :
+    `<div id="author-info-container">
+    <p>Written by <a target="_blank" href="https://linkedin.com/in/meruzh">Meruzh Janoyan</a> ${yearDiff > 0 ? diffText : `on ${formattedDate}`}</p>
+  </div>`;
+
+  const wrapperElement = document.querySelector('#container > .wrapper');
+  wrapperElement.innerHTML = `${authorInfoDiv}${wrapperElement.innerHTML}${authorInfoDiv}`
+}
+
+function formatArmDate(date) {
+  const day = date.getDate();
+  const year = date.getFullYear().toString();
+  const monthNames = [
+    'հունվարի',
+    'փետրվարի',
+    'մարտի',
+    'ապրիլի',
+    'մայիսի',
+    'հունիսի',
+    'հուլիսի',
+    'օգոստոսի',
+    'սեպտեմբերի',
+    'հոկտեմբերի',
+    'նոյեմբերի',
+    'դեկտեմբերի'
+  ];
+
+  return `${monthNames[date.getMonth()]} ${day}-ին, ${year}թ.`;
+}

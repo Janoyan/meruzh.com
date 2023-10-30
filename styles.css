@@ -313,3 +313,7 @@ span.code {
     border: 1px rgb(197, 197, 197) solid;
     font-style: initial;
 }
+
+#author-info-container {
+    background: #fcf2c4;
+}
