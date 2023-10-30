@@ -9,3 +9,5 @@ find "$folder_to_search" -type f -name "*.html" | while read -r file; do
 done
 echo "Set 'jan_v' parameter in index.html to timestamp $timestamp"
 sed -i "" "s/\(jan_v=\)[^&\"]*/\1$timestamp/g" "./index.html"
+
+node sitemap-generator.js
