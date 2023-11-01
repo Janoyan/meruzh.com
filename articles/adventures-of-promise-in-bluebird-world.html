@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGJSF7C84Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JGJSF7C84Y');
+    </script>
+
+    <title>Adventures of Promise in Bluebird world</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2020-04-09T00:00:00.000Z"/>
+    <meta name="title" content="Adventures of Promise in Bluebird world"/>
+    <meta property="og:title" content="Adventures of Promise in Bluebird world"/>
+    <meta name="description"
+          content="Once upon a time a boy named Promise decided to go travel in one of the famous worlds in his reality. Article is about several useful methods of bluebird npm package."/>
+    <meta property="og:description"
+          content="Once upon a time a boy named Promise decided to go travel in one of the famous worlds in his reality. Article is about several useful methods of bluebird npm package."/>
+    <meta property="og:url" content="https://meruzh.com/articles/adventures-of-promise-in-bluebird-world"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/adventures-of-promise-in-bluebird-world"/>
+    <meta property="og:image" content="/images/bluebird.png"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Adventures of Promise in Bluebird world"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description"
+          content="Once upon a time a boy named Promise decided to go travel in one of the famous worlds in his reality. Article is about several useful methods of bluebird npm package."/>
+    <meta name="twitter:image:src" content="/images/bluebird.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="en-us">
+
+    <link rel="stylesheet" href="/intellij-light.min.css">
+    <script src="/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1698868687">
+    <script src="/script.js?jan_v=1698868687"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Adventures of Promise in Bluebird world</h1>
+        <p>Once upon a time a boy named Promise decided to go travel in one of the famous worlds in his reality. Although Promise had a lot of determination inside himself, it was very hard to decide to leave his native place and go toward Bluebird. However, he took everything that could be necessary for him during the journey and started his journey.</p>
+
+
+        <img alt="" src="/images/wlking-promise.gif">
+
+        <p>The purpose of Promise was to learn new techniques from the inhabitants of Bluebird. He always wanted to be the best in his field. While he was walking he was enjoying the beautiful sight of the rocks in his way.
+        </p>
+
+        <div class="divider">***</div>
+
+        <p>So eventually Promise reached the Bluebird world and the first person whom he encountered was a guy with the name Map.</p>
+
+        <p class="dialogue">
+            <span class="dialogue-1">- Hey, who are you ?</span>
+
+            <span class="dialogue-2">- I am Map and you ?</span>
+
+            <span class="dialogue-1">- I am Promise from Node city. I am traveling here to learn more about your techniques. Could you help me ?</span>
+
+            <span class="dialogue-2">- Sure ! Everybody in Bluebird has their own functionality. We meant to do asynchronous jobs and help our users to write clean code. So if you want I can explain what I was created for.</span>
+
+            <span class="dialogue-1">- It'll be really nice !</span>
+
+            <span class="dialogue-2">- I'm an analog of the <span class="code">Array.map()</span> function but for asynchronous tasks. I can take a concurrency parameter and return a promise which will be resolved when all the tasks are done. My code is shorter, and I'm useful especially when users need to limit the count of parallel tasks.</span>
+        </p>
+
+<pre><code class="language-javascript">const bluebird = require('bluebird');
+
+async function task(data, ms = 500) {
+  console.log(data);
+  await bluebird.delay(ms);
+  return data;
+}
+
+bluebird.map(['A', 'B', 'C', 'D', 'E', 'F'], async (item) => {
+  return task(item);
+}, { concurrency: 3 }).then((result) => {
+  console.log(result);
+});</code></pre>
+
+        <img alt="" src="/images/b-map.gif">
+
+        <div class="divider">***</div>
+
+        <p>After mastering all the techniques of Map, Promise thanked him and continued his way. After walking for a while he saw an old man who was sitting by the fire and reading a book.</p>
+
+        <p class="dialogue">
+            <span class="dialogue-1">- Good afternoon sir ! I'm Promise and I'm looking for knowledge. I want to learn all the techniques you know.</span>
+
+            <span class="dialogue-2">- Good afternoon my son. I see you are interested in my functionality. Well I will help you. My name is Each I work with Iterables. In your Node city there is a function called Array.forEach(). I am an analog of it.</span>
+
+            <span class="dialogue-1">- Ohh, I am so happy to meet you. Could you explain in more detail ?</span>
+
+            <span class="dialogue-2">- So I take an iterable parameter and loop over it like native function <span
+                    class="code">Array.forEach()</span>. I also take a callback parameter which can be an async function or can be any function which returns promise. I don't do all tasks at once instead I do task by task. In other words I do one thing per unit of time. As you can't do asynchronous work inside native <span
+                    class="code">Array.forEach() </span>function you can switch to me for that purpose.</span>
+
+        </p>
+
+
+<pre><code class="language-javascript">const bluebird = require('bluebird');
+
+async function task(data, ms = 500) {
+  console.log(data);
+  await bluebird.delay(ms);
+  return data;
+}
+
+bluebird.each(['A', 'B', 'C', 'D', 'E', 'F'], async (item) => {
+  return task(item);
+}).then((result) => {
+  console.log(result);
+});</code></pre>
+
+
+        <img alt="" src="/images/b-each.gif">
+
+        <div class="divider">***</div>
+
+        <p>Promise gave his thanks to Each and continued his journey. Sometime later he saw a girl who was taking photos of butterflies. She was a young girl with blonde hair.</p>
+
+        <p class="dialogue">
+            <span class="dialogue-1">- Hey miss can I know why you were created ? What is your functionality ?</span>
+
+            <span class="dialogue-2">- Who are you ?</span>
+
+            <span class="dialogue-1">- I'm Promise from Node city. I'm on a journey through your world to get more knowledge about your techniques.</span>
+
+            <span class="dialogue-2">- I'm Some. I'm taking an array of promises as the first parameter and count parameter as the second one. I return a promise which will be fulfilled as soon as count promises from the given promise array are fulfilled.
+
+            For example if you give me a list with 10 promises and 3 as a count parameter I will return you a promise which will be fulfilled as soon as 3 promises from your list are fulfilled. As a result I return an array which contains results from the fulfilled promises.</span>
+        </p>
+
+
+<pre><code class="language-javascript">const bluebird = require('bluebird');
+
+async function task(data, ms = 1000) {
+  console.log(`${data} started`);
+  await bluebird.delay(ms);
+  console.log(`${data} done`);
+  return data;
+}
+
+const promises = [2, 0, 1, 9].map(item => task(item ,item * 500));
+
+bluebird.some(promises, 3).then((result) => {
+  console.log(result);
+});</code></pre>
+
+        <img alt="" src="/images/b-some.gif">
+
+        <div class="divider">***</div>
+
+        <p>Promise thanked Some and continued walking toward other functions. In the distance he saw a police car with bright flashing lights. It interested him, and he decided to go and see what functionality the policeman has.</p>
+
+        <p class="dialogue">
+            <span class="dialogue-2">- Can I see your documents sir ?</span>
+
+            <span class="dialogue-1">- Yes please ! Here you are.</span>
+
+            <span class="dialogue-2">- So you are from Node city… What are you doing here ?</span>
+
+            <span class="dialogue-1">- I'm traveling here. I want to learn everything about the Bluebird world. I already met with Map, Each, Some and now I want to know what your functionality is?</span>
+
+            <span class="dialogue-2">- Hmm, my name is Delay. I take two parameters and return a promise. My first parameter is a milliseconds. The second one is a value but it's optional. So if you want to have a promise which will be fulfilled after the time you want and with the value you want then simply call me by putting milliseconds and desired value as parameters.</span>
+
+            <span class="dialogue-1">- Thank you ! It is simple but useful !</span>
+        </p>
+
+<pre><code class="language-javascript">const bluebird = require('bluebird');
+
+bluebird.delay(1000, 'done 1000').then((result) => {
+  console.log(result);
+});
+
+bluebird.delay(1000, 'done 2000').then((result) => {
+  console.log(result);
+});
+
+bluebird.delay(500, 'done 500').then((result) => {
+  console.log(result);
+});</code></pre>
+
+        <img alt="" src="/images/b-delay.gif">
+
+        <p>After resolving all the promises, Delay let Promise go.Promise continued his investigations and met more inhabitants from Bluebird. When it was already dark, Promise felt very tired and wanted to go back to his Node city. After some time he realized that he lost his way and couldn't find it. Little by little he started to panic and eventually understood that he wasn't able to do anything. He set down on the stone and started to cry.
+        </p>
+
+        <p class="dialogue"><span class="dialogue-2">- Why are you crying ?</span>Suddenly he heard a voice. He raised his head but couldn't see anybody.
+            <span class="dialogue-1">- Who is it ?</span>
+
+            <span class="dialogue-2">- Why are you crying ? Look here I'm on top of you !</span>
+
+            <span class="dialogue-1">- Promise looked up and saw a wonderful blue bird. He was glad to find at least anybody who could help him to find his way.</span>
+
+            <span class="dialogue-2">- How wonderful a bird you are ! What is your name ?</span>
+
+            <span class="dialogue-1">- I am Promisify and who are you ?</span>
+
+            <span class="dialogue-1">- I am Promise from Node city I lost my way</span>
+
+            <span class="dialogue-2">- No worries, I will help you. Just follow me. I will fly toward your city.</span>
+
+            <span class="dialogue-1">- Cool ! I'm so happy to meet you, kind bird. I will follow you but could you also tell me your use while flying? What is your functionality ?</span>
+
+            <span class="dialogue-2">- Ok follow me I will tell you all about me in the way. So if you are from Node city probably you are aware about callbacks. Which one do you think is better callbacks or promises ?</span>
+
+            <span class="dialogue-1">- Promises for sure ! Using promises we can write more clean code.</span>
+
+            <span class="dialogue-2">- That's right ! So I can transform callback functions into promise return functions. I'm wrapping them and when callback is called I resolve the returned promise.</span>
+
+            <span class="dialogue-1">- But what about results and errors ?</span>
+
+            <span class="dialogue-2">- Normally the first argument of callback is an error and second one is a result. So I resolve promises based on those parameters. And here is your city ! I hope you could learn a lot of things during this journey. Now I have to leave you. Go home and think about everything you learned. Good luck Promise !</span>
+        </p>
+
+
+<pre><code class="language-javascript">const bluebird = require('bluebird');
+
+function echo(text, callback) {
+  callback(null, text);
+}
+
+const echoPromise = bluebird.promisify(echo);
+
+echo('Hello', (err, result) => {
+  console.log(`From callback: ${result}`);
+});
+
+echoPromise('Hello').then((result) => {
+  console.log(`From promise: ${result}`);
+});</code></pre>
+        <img alt="" src="/images/b-promis.gif">
+
+
+
+      </div>
+</div>
+</body>
+
+</html>

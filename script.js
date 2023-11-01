@@ -13,6 +13,14 @@ var menuItems = [
     background: 'linear-gradient(16deg, rgba(132,222,166,1) 42%, rgba(68,138,73,1) 100%);'
   },
   {
+    title: 'Adventures of Promise in Bluebird world',
+    description: 'Once upon a time a boy named Promise decided to go travel in one of the famous worlds in his reality. Article is about several useful methods of bluebird npm package.',
+    image: '/images/bluebird.png',
+    link: '/articles/adventures-of-promise-in-bluebird-world',
+    dateString: 'Apr 9, 2020',
+    background: 'linear-gradient(16deg, rgb(148 227 237) 42%, rgb(255 255 255) 100%)'
+  },
+  {
     title: 'Cursor in MongoDB',
     description: 'In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor.',
     image: '/images/cursor-in-mongodb.png',

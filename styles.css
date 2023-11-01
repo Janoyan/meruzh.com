@@ -43,7 +43,7 @@ body.blue {
     margin: 20px auto;
     padding: 10px;
     border-radius: 3px;
-    transform: scale(0.9);
+    transform: scale(0.95);
     transition: all 400ms;
 }
 
@@ -340,4 +340,39 @@ span.code {
     width: 14px;
     display: inline-block;
     margin: auto 2px;
+}
+
+
+div.divider {
+    display: block;
+    margin: 50px auto;
+    text-align: center;
+    letter-spacing: 15px;
+}
+
+#container p {
+    white-space: break-spaces;
+}
+
+#container p.dialogue {
+    white-space: normal !important;
+}
+
+#container p.dialogue > span {
+    font-style: italic;
+    padding: 10px 5%;
+    margin: 0;
+    display: block;
+    box-shadow: inset -1px 0 12px 13px #ffffff;
+    width: fit-content;
+    border-radius: 10px 60px 10px 60px;
+}
+
+#container p.dialogue .dialogue-1 {
+    background-color: #eafde5;
+
+}
+
+#container p.dialogue .dialogue-2 {
+    background-color: #fff7e8;
 }
