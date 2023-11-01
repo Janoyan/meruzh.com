@@ -9,14 +9,16 @@ var menuItems = [
     description: 'This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren\'t only six tips, of course, I\'ve only listed the six most important ones according to my experience.',
     image: '/images/node-js.jpg',
     link: '/articles/6-tips-to-speed-up-node-js-apps-develop',
-    dateString: 'Dec 16, 2020'
+    dateString: 'Dec 16, 2020',
+    background: 'linear-gradient(16deg, rgba(132,222,166,1) 42%, rgba(68,138,73,1) 100%);'
   },
   {
     title: 'Cursor in MongoDB',
     description: 'In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor.',
     image: '/images/cursor-in-mongodb.png',
     link: '/articles/cursor-in-mongo-db',
-    dateString: 'Sep 28, 2019'
+    dateString: 'Sep 28, 2019',
+    background: 'linear-gradient(14deg, rgb(238 233 167) 42%, rgb(237 208 31) 100%);'
   }
 ];
 
@@ -32,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <div id="menu-container">
   ${menuItems.map((item) => `
-      <div class="menu-item" onclick="navigateTo('${item.link}')">
+      <div class="menu-item" onclick="navigateTo('${item.link}')" style="background: ${item.background}">
         <img src="${item.image}">
         <div>
             <p class="title">${item.title}</p>
@@ -67,6 +69,7 @@ function navigateTo(link) {
 
 function openMenu() {
   contentScrollY = window.scrollY;
+  document.body.classList.add('blue');
   document.getElementById('menu-container').classList.add('active');
   document.getElementById('jan-button').classList.add('active');
   document.getElementById('container').classList.remove('active');
@@ -77,6 +80,7 @@ function openMenu() {
 
 function closeMenu() {
   menuScrollY = window.scrollY;
+  document.body.classList.remove('blue');
   document.getElementById('menu-container').classList.remove('active');
   document.getElementById('jan-button').classList.remove('active');
   document.getElementById('container').classList.add('active');
@@ -104,10 +108,10 @@ function addAuthorInfo() {
 
   const authorInfoDiv = lang === 'hy' ? `
     <div id="author-info-container">
-      <p>Հեղինակ՝ <a target="_blank" href="https://linkedin.com/in/meruzh">Մերուժ Ջանոյան</a>, հրապարակվել է ${yearDiff > 0 ? diffTextArm : `${formattedDate}`}</p>
+      <p>Հեղինակ՝ <a target="_blank" href="https://linkedin.com/in/meruzh"><img src="/images/linkedin.png">Մերուժ Ջանոյան</a>, հրապարակվել է ${yearDiff > 0 ? diffTextArm : `${formattedDate}`}</p>
     </div>` :
     `<div id="author-info-container">
-    <p>Written by <a target="_blank" href="https://linkedin.com/in/meruzh">Meruzh Janoyan</a> ${yearDiff > 0 ? diffText : `on ${formattedDate}`}</p>
+    <p>Written by <a target="_blank" href="https://linkedin.com/in/meruzh"><img src="/images/linkedin.png">Meruzh Janoyan</a> ${yearDiff > 0 ? diffText : `on ${formattedDate}`}</p>
   </div>`;
 
   const wrapperElement = document.querySelector('#container > .wrapper');

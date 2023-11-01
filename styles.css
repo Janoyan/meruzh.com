@@ -1,3 +1,7 @@
+body.blue {
+    background-color: #19126e;
+}
+
 #container {
     display: none;
     transition: opacity 800ms;
@@ -38,11 +42,14 @@
     max-width: 500px;
     margin: 20px auto;
     padding: 10px;
+    border-radius: 3px;
+    transform: scale(0.9);
+    transition: all 400ms;
 }
 
 .menu-item:hover {
     cursor: pointer;
-    border: 3px dashed;
+    transform: scale(1);
 }
 
 .menu-item:hover .title {
@@ -69,7 +76,7 @@
 
 .menu-item .description {
     height: 200px;
-    overflow: scroll;
+    overflow: hidden;
 }
 body {
     font-family: 'Roboto';
@@ -315,5 +322,22 @@ span.code {
 }
 
 #author-info-container {
-    background: #fcf2c4;
+    background: #eaffd6;
+}
+
+#author-info-container a  {
+    text-decoration: none;
+    color: #393939;
+    font-weight: bold;
+    background: #f8f8f8;
+}
+
+#author-info-container a:hover {
+    cursor: pointer;
+}
+
+#author-info-container a >img {
+    width: 14px;
+    display: inline-block;
+    margin: auto 2px;
 }
