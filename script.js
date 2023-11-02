@@ -122,8 +122,9 @@ function addAuthorInfo() {
     <p>Written by <a target="_blank" href="https://linkedin.com/in/meruzh"><img src="/images/linkedin.png">Meruzh Janoyan</a> ${yearDiff > 0 ? diffText : `on ${formattedDate}`}</p>
   </div>`;
 
+  const hasLinkedinLink = document.querySelector('div.linkedin > iframe');
   const wrapperElement = document.querySelector('#container > .wrapper');
-  wrapperElement.innerHTML = `${authorInfoDiv}${wrapperElement.innerHTML}${authorInfoDiv}`
+  wrapperElement.innerHTML = `${authorInfoDiv}${wrapperElement.innerHTML}${hasLinkedinLink ? '' : authorInfoDiv}`
 }
 
 function formatArmDate(date) {

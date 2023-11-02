@@ -1,3 +1,3 @@
 User-agent: *
 Disallow:
-Sitemap: https://meruzh.com/sitemap.xml
+Sitemap: https://meruzh.com/sitemapx.xml
