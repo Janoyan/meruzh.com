@@ -3,7 +3,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 const folderPath = './articles';
-const sitemapPath = './sitemap.xml';
+const sitemapPath = './sitemapx.xml';
 
 const sitemapHeader = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;

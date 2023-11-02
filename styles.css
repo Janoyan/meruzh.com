@@ -328,7 +328,6 @@ span.code {
 #author-info-container a  {
     text-decoration: none;
     color: #393939;
-    font-weight: bold;
     background: #f8f8f8;
 }
 
@@ -383,4 +382,9 @@ div.divider {
 .linkedin > iframe {
     width: 500px;
     height: 760px;
+}
+
+
+#container span.bold {
+    font-weight: bold;
 }

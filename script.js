@@ -13,6 +13,14 @@ var menuItems = [
     background: 'linear-gradient(16deg, rgba(132,222,166,1) 42%, rgba(68,138,73,1) 100%);'
   },
   {
+    title: '[cybersecurity] Login with social account',
+    description: 'Often in various websites and applications we see social login feature. Let\'s try to understand,if there is an information risk arising from that and ways of protecting our personal information.',
+    image: '/images/cb-1.jpeg',
+    link: '/articles/cybersecurity-login-with-social-accounts',
+    dateString: 'August 16, 2020',
+    background: 'linear-gradient(258deg, rgb(217 202 127) 42%, rgb(255 247 208) 100%);'
+  },
+  {
     title: 'Adventures of Promise in Bluebird world',
     description: 'Once upon a time a boy named Promise decided to go travel in one of the famous worlds in his reality. Article is about several useful methods of bluebird npm package.',
     image: '/images/bluebird.png',
