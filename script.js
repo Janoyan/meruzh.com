@@ -21,6 +21,14 @@ var menuItems = [
     background: 'linear-gradient(258deg, rgb(217 202 127) 42%, rgb(255 247 208) 100%);'
   },
   {
+    title: 'ՄՈՒՏՔ ԱՅԼ ԿԱՅՔԻ ՄԻՋՈՑՈՎ',
+    description: 'Հաճախ տարբեր կայքերում և հավելվածներում կարելի է հանդիպել «Մուտք այլ կայքի միջոցով» կոճակների։ Փորձենք հասկանալ ինչի համար են նախատեսված այդ կոճակները, դրանց օգտակարությունը, դրանցից բխող տեղեկատվական վտանգները և այդ վտանգներից պաշտպանվելու եղանակները։',
+    image: '/images/cba-1.jpg',
+    link: '/articles/login-with-social-account-arm',
+    dateString: 'Օգոստոսի 16, 2020թ.',
+    background: 'linear-gradient(202deg, rgb(232 172 162) 42%, rgb(147 205 255) 100%)'
+  },
+  {
     title: 'Adventures of Promise in Bluebird world',
     description: 'Once upon a time a boy named Promise decided to go travel in one of the famous worlds in his reality. Article is about several useful methods of bluebird npm package.',
     image: '/images/bluebird.png',
