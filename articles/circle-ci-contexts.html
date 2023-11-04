@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGJSF7C84Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JGJSF7C84Y');
+    </script>
+
+    <title>Management of environment files using CircleCI contexts</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2021-02-13T00:00:00.000Z"/>
+    <meta name="title" content="Management of environment files using CircleCI contexts"/>
+    <meta property="og:title" content="Management of environment files using CircleCI contexts"/>
+    <meta name="description"
+          content="In this article I have described a mechanism which allows to facilitate management of .env files by using CircleCI contexts and a little bit scripting."/>
+    <meta property="og:description"
+          content="In this article I have described a mechanism which allows to facilitate management of .env files by using CircleCI contexts and a little bit scripting."/>
+    <meta property="og:url" content="https://meruzh.com/articles/circle-ci-contexts"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/circle-ci-contexts"/>
+    <meta property="og:image" content="/images/ci-1.png"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Management of environment files using CircleCI contexts"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description"
+          content="In this article I have described a mechanism which allows to facilitate management of .env files by using CircleCI contexts and a little bit scripting."/>
+    <meta name="twitter:image:src" content="/images/ci-1.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="en-us">
+
+
+
+    <link rel="stylesheet" href="/intellij-light.min.css">
+    <script src="/highlight.min.js"></script>
+    <script src="/highlightjs-line-numbers.min.js"></script>
+    <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1699126292">
+    <script src="/script.js?jan_v=1699126292"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'></head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Management of environment files using CircleCI contexts</h1>
+        <p>Everyone knows that pushing sensitive data to git repositories early or late may lead to security issues. Usually to avoid such situations all the files which may contain any sensitive information, developers add to <span class="code">.gitignore</span> files which tells git that it should skip those files from adding to the repository and all the more pushing them to the remote one. There are many types of files which usually don’t add to repositories. Depending on used technologies they can b <span class="code">.env</span> files which contain environment variables, various configuration secret files, certificates, private keys etc.</p>
+
+        <img alt="" src="/images/ci-1.png">
+
+        <p>Actually if you are managing just a single monolithic app most likely you will not encounter any problem during maintenance of it. The management of environment files becomes quite complex when you have a microservice architecture with lots of services and have deployed them to multiple environments such as testing, staging, production. In this article I have described a mechanism which allows to facilitate management of <span class="code">.env</span> files by using CircleCI contexts and a little bit scripting.</p>
+
+        <img alt="" src="/images/ci-2.gif">
+
+        <h2>What are CircleCI contexts ?</h2>
+        <p>The official website of CircleCI gives the following definition of contexts:</p>
+        <p class="quote">Contexts provide a mechanism for securing and sharing environment variables across projects. The environment variables are defined as name/value pairs and are injected at runtime.</p>
+
+        <p>So to be brief, contexts allow us to define environment variables through the CircleCI dashboard and use them during job runs. It’s possible to create multiple contexts with different names and include various environment variables into it.</p>
+
+        <img alt="" src="/images/ci-3.gif">
+        <p>it must be said that CircleCI doesn’t group variables by contexts during job runs instead overrides earlier contexts with the same variable names. And this is one of the problems which will be resolved during implementation of the current mechanism.</p>
+
+        <h2>Predefining contexts</h2>
+        <p>To be simple let’s assume there is an api service which requires a <span class="code">.env</span> file to be in the root directory of it. Also let’s assume there are testing and staging environments where the mentioned application is running.</p>
+        <img alt="" src="/images/ci-4.gif">
+
+        <p>So there are two environments which means it’s required to have two .env files defined. By navigating to the contexts section of the organization settings in CircleCI dashboard, you need to create two different contexts for each <span class="code">.env</span> file with appropriate names.</p>
+
+        <p>Let’s name them this way:</p>
+        <img alt="" src="/images/ci-5.webp">
+        <p>Later by adding new variables into each of these contexts, they will automatically appear into the appropriate environment file.</p>
+
+        <h2>Creating a mapping file</h2>
+        <p>Let’s create a folder named scripts in the <span class="code">.circleci</span> directory of the project. In the new created scripts folder create a <span class="code">mappings.txt</span> file with the following content:</p>
+        <pre>
+            <code class="txt">.env=API_USERS_
+.env.test=API_USERS_TEST_
+            </code>
+        </pre>
+
+        <p>Left side of each line in the file above is an environment file path and on the right side is defined a prefix which later in CircleCI contexts will be added to variable names.</p>
+
+        <h2>Adding variables to contexts</h2>
+        <p>As we already have created the mappings file it’s time to add environment variables to the contexts. Names of variables should comply with the following structure:</p>
+        <p class="quote">{service_prefix}_{variable_name}</p>
+        <p>where <span class="code">service_prefix</span> is a prefix defined in the <span
+                class="code">mappings.txt</span> for the current environment and <span class="code">variable_name</span> is an actual environment variable name which will be included in <span class="code">.env</span> file.</p>
+
+        <p>After adding variables to the contexts, they should look like this:</p>
+        <img alt="" src="/images/ci-6.webp">
+
+        <h2>Creating create/copy shell scripts</h2>
+        <p>All the variables defined in CircleCI contexts are stored as environment variables in the machines where jobs are running.</p>
+        <img alt="" src="/images/ci-7.gif" style="max-width: 700px">
+        <p>Purpose of creating shell scripts is to generate <span class="code">.env</span> files in those machines and move them to external machines(<span class="italic">servers</span>) if needed.</p>
+
+        <p>Existence of the environment file for testing environment (<span class="italic">.env.test</span>) can be necessary in the current executer machine, for running automation tests. The environment file intended for staging is necessary for copying it from the executor machine to staging server.</p>
+
+        <p>Let’s create a script called <span class="code">generate_env_files.sh</span> in <span class="code">.circleci/scripts</span> directory. Here is the code example which should contain the script:</p>
+        <pre><code class="language-bash">mappings=()
+while IFS= read -r line; do
+ mappings+=("$line")
+done < mappings.txt
+
+for value in "${mappings[@]}" ; do
+ prefix=${value#*=};
+ env_path=${value%=*};
+ rm -f "$env_path" && for l in $(printenv | grep ^"$prefix"); do echo ${l#$prefix} >> "$env_path"; done
+done
+        </code></pre>
+
+        <p>The script above does the following:</p>
+
+        <ul>
+            <li>Reads <span class="code">mappings.txt</span> and adds each line of it’s content as an element of the <span class="code">mappings()</span> array</li>
+            <li>Loops over <span class="code">mappings()</span> array and extracts prefixes and environment file paths</li>
+            <li>Using <span class="code">printenv</span> and grep shell commands collects all the environment variables with current prefixes</li>
+            <li>Stores collected variables into the file which destination is stored in <span class="code">env_path</span> variable</li>
+        </ul>
+
+        <p>So after running the script above <span class="code">.env</span> and <span class="code">.env.test</span> files with environment variables will be created in the root directory of the project in the executer machine. Now tests can be run as <span class="code">.env.test</span> file already exists in the root directory of the app.</p>
+        <p>The next step is moving environment files to the external servers. Let’s create a file called copy_env_files.sh in <span class="code">.circleci/scripts</span> directory and place there the following code snippet:</p>
+        <pre><code class="language-bash">mappings=()
+while IFS= read -r line; do
+ mappings+=("$line")
+done < mappings.txt
+
+for value in "${mappings[@]}" ; do
+ env_path=${value%=*};
+ scp $env_path xx.xx.xx.xx:/var/www/api-users/$env_path
+done
+        </code></pre>
+
+        <p>The script above does the following:</p>
+        <ul>
+            <li>Reads mappings.txt and adds each line of it’s content as an element of the <span class="code">mappings()</span> array</li>
+            <li>Loops over <span class="code">mappings()</span> array and by extracting environment file paths copies them from current machine to the <span class="italic">staging server</span></li>
+        </ul>
+        <p><span style="background-color: #f6f6d1"><span class="bold">NOTE:</span> xx.xx.xx.xx should be replaced with the real ip address of the machine</span></p>
+        <h2>CircleCI configuration file</h2>
+
+        <img alt="" src="/images/ci-8.gif" style="max-width: 700px">
+        <p>Here is a sample CircleCI configuration which runs tests and deploy changes by automatically generating environment files.</p>
+
+        <pre><code class="language-yaml">version: 2
+jobs:
+ deploy:
+   steps:
+     - checkout
+     - add_ssh_keys:
+         fingerprints:
+           - "c1:37:bf:df:a7:a1:04:7c:be:d1:46:83:9a:bf:76:73"
+     - run:
+         name: Add to known_hosts
+         command: "xx.xx.xx.xx >> ~/.ssh/known_hosts"
+     - run:
+         name: Create .env files
+         command: ./.circleci/scripts/generate-env-files.sh
+     - run:
+         name: Copy .env files
+         command: ./.circleci/scripts/copy-env-files.sh
+     - run:
+         name: Deploy api-users
+         command: |
+           ssh xx.xx.xx.xx \
+           "cd /var/www/api-users && \
+           git pull && \
+           npm run start"
+ test:
+   steps:
+     - checkout
+     - run:
+         name: Create .env files
+         command: ./.circleci/scripts/generate-env-files.sh
+     - run:
+         name: Run tests
+         command: npm run test
+workflows:
+ version: 2
+ test_and_deploy:
+   jobs:
+     - test:
+         context:
+           - testing-api-users
+     - deploy:
+         context:
+           - staging-api-users
+         requires:
+           - test
+         filters:
+           branches:
+             only: master
+
+
+    </code></pre>
+
+        <p>There are two jobs defined in the yaml file above, <span class="bold">test</span> and <span class="bold">deploy</span>. Let’s go through the steps of each job and give a brief explanation of each one.</p>
+
+        <h3>test</h3>
+        <ul>
+            <li><span class="italic">Line 27:</span> Checking out current version of the project</li>
+            <li><span class="italic">Line 30:</span> Generating environment files by executing <span class="code">generate-env-files.sh</span> script</li>
+            <li><span class="italic">Line 33:</span> Running app specific tests</li>
+        </ul>
+
+        <h3>deploy</h3>
+        <ul>
+            <li><span class="italic">Line 5:</span> Checking out current version of the project</li>
+            <li><span class="italic">Line 8:</span> Adding fingerprint of ssh key of staging server</li>
+            <li><span class="italic">Line 11:</span> Adding IP address of the staging server to the known hosts</li>
+            <li><span class="italic">Line 14:</span> Generating environment files by executing <span class="code">generate-env-files.sh</span> script</li>
+            <li><span class="italic">Line 17:</span> Copying just created environment files to the staging server by executing <span class="code">copy-env-files.sh</span> script</li>
+            <li><span class="italic">Line 21:</span> Accessing to the staging server and running appropriate commands for deployment</li>
+        </ul>
+
+        <p>Also, please take a look at 40 and 43 lines where contexts for each environment are defined.</p>
+
+        <h2>Conclusion</h2>
+
+        <p>Everything described in this article is a working example of the real application. We applied this method in one of our projects with microservices architecture.</p>
+        <p>Thank you for reading !</p>
+
+    </div>
+</div>
+
+</body>
+</html>
