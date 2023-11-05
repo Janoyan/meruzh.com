@@ -5,6 +5,14 @@ window.alwaysOpen = false;
 
 var menuItems = [
   {
+    title: 'Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ',
+    description: 'Հոդվածում նկարագրվում է մի մեթոդ, որով կարելի է փոփոխել server-ի IP հասցեն անհրաժեշտությունից ելնելով։',
+    image: '/images/iph.png',
+    link: '/articles/ip-rotation-arm',
+    dateString: 'Դեկտեմբեր 10, 2022թ.',
+    background: 'linear-gradient(356deg, rgb(224 224 224) 42%, rgb(255 255 255) 100%);'
+  },
+  {
     title: 'WARRIOR’S CODE',
     description: 'The article explores the intriguing parallels between a software developer\'s role and that of a warrior. As two characters discuss their predicament in the world of programming, they touch upon the developer\'s unwavering principles, time management strategies, and the creation of utility programs.',
     image: '/images/wc-1.webp',

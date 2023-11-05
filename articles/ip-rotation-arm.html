@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGJSF7C84Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'G-JGJSF7C84Y');
+    </script>
+
+    <title>Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2022-12-10T00:00:00.000Z"/>
+    <meta name="title" content="Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ"/>
+    <meta property="og:title" content="Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ"/>
+    <meta name="description"
+          content="Հոդվածում նկարագրվում է մի մեթոդ, որով կարելի է փոփոխել server-ի IP հասցեն անհրաժեշտությունից ելնելով։"/>
+    <meta property="og:description"
+          content="Հոդվածում նկարագրվում է մի մեթոդ, որով կարելի է փոփոխել server-ի IP հասցեն անհրաժեշտությունից ելնելով։"/>
+    <meta property="og:url" content="https://meruzh.com/articles/ip-rotation-arm"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/ip-rotation-arm"/>
+    <meta property="og:image" content="/images/iph.png"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description"
+          content="Հոդվածում նկարագրվում է մի մեթոդ, որով կարելի է փոփոխել server-ի IP հասցեն անհրաժեշտությունից ելնելով։"/>
+    <meta name="twitter:image:src" content="/images/iph.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="hy">
+
+
+    <link rel="stylesheet" href="/intellij-light.min.css">
+    <script src="/highlight.min.js"></script>
+    <script src="/highlightjs-line-numbers.min.js"></script>
+    <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1699218526">
+    <script src="/script.js?jan_v=1699218526"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ</h1>
+        <p>Վերջերս մի հետաքրքիր միտք ունեի կապված մեծ տվյալների վերլուծման հետ։ Այդ միտքը իրագործելու համար անհրաժեշտ էր տվյալների բազայում ունենալ որոշակի տվյալներ հայտնի սոցիալական կայքից, որը կօգտագործվեր հաշվարկներ իրականացնելու համար։</p>
+        <p>Առաջին հայացքից տվյալներ ձեռք բերելը այնքան էլ բարդ գործ չեր թվում, մինչ այն պահը երբ հայտնվեց IP հասցեների արգելափակման խնդիրը։</p>
+        <p>Որոշակի ակտիվություն նկատելուն պես, վերոնշյալ կայքը ժամանակավորապես արգելափակում էր IP հասցեն՝ որտեղից գալիս էին հարցումները։</p>
+        <p>Տարատեսակ եղանակներ փորձելով, ի վերջո այդ խնդիրը լուծվեց։ Այստեղ ներկայացված է առավել հետաքրքիր լուծումներից մեկը։</p>
+
+        <h2>Ի՞նչ ենք ցանկանում անել։</h2>
+        <img alt="" src="/images/her-1.gif" style="max-width: 700px">
+        <p>Մեր նպատակն է ունենալ փոքրիկ NodeJS ծրագիր, որը տեղադրված և կարգավորված կլինի Heroku համակարգում և որը կկատարի բազմաթիվ HTTP հարցումներ մեր ցանկացած հասցեներով, և անհրաժեշտության դեպքում կկարողանա փոփոխել սեփական IP հասցեն։</p>
+        <p>Մեխանիզմը հիմնված է բացառապես Heroku համակարգի այն հատկության վրա, որ նրա սերվերները ամեն անգամ վերսկսվելիս փոփոխում են իրենց IP հասցեները։</p>
+
+        <h2>Նախ NodeJS ծրագիրը։</h2>
+        <p>Սկսենք փոքրիկ NodeJS ծրագրից, որը կկատարի հարցումներ տրամադրված URL-ներից յուրաքանչյուրին և կցուցադրի յուրաքանչյուր ստացված պատասխան։ Ծրագիրը նաև պետք է ճիշտ կարգավորված լինի այն դեպքերի համար` երբ հարցումներից որևէ մեկի կամ մի քանիսի ընթացքում տեղի ունենա հարցումների քանակի սահմանափակման հետ կապված խափանումներ։</p>
+        <img alt="" src="/images/her-2.webp">
+        <p>Ներկայացված օրինակում ծրագիրը կատարում է հարցումներ և ինչ-որ քանակի հարցումներից հետո արհեստականորեն կազմակերպում է խափանում։ Խափանում առաջացնելու նպատակը բացառապես IP հասցեների փոփոխման մեթոդը թեստավորելն է, այն անհրաժեշտ չէ ունենալ իրական ծրագրում։ Ներքևում կարելի է տեսնել ծրագրի աշխատանքի արդյունքը։</p>
+        <img alt="" src="/images/her-3.gif">
+        <p>Ինչպես արդեն նկատեցիք սահմանված բոլոր URL-ները որպես հարցման պատասխան վերադարձնում են հարցումը կատարող համակարգչի IP հասցեն։</p>
+
+        <h2>Վերսկսում։ IP հասցեի փոփոխում։</h2>
+        <p>Այժմ անրադառնանք IP հասցեի փոփոխման մեխանիզմին։ Ինչպես արդեն ասվեց Heroku համակարգը(հոդվածը գրելու պահին) ունի հատկություն, ըստ որի յուրաքանչյուր վերսկսումից հետո փոփոխում է տվյալ սերվերի IP հասցեն։ Օգտվելով այդ հատկությունից, յուրաքանչյուր անգամ երբ պետք լինի փոփոխել սերվերի IP հասցեն, մենք ընդամենը կվերսկսենք սերվերի աշխատանքը։</p>
+        <p>Heroku համակարգը տրամադրում է API-ներ որոնք կարող են օգտակար լինել այդ համակարգում որոշակի գործերի ավտոմատացման համար։ Մեր դեպքում անհրաժեշտ է սերվերի վերսկսման հնարավորություն, որը թույլ է տալիս հետևյալ API մեթոդը՝</p>
+        <p class="quote">DELETE /apps/{APP_NAME}/dynos/{DYNO_ID_OR_NAME}</p>
+        <p>Որտեղ `</p>
+        <p><span class="bold">APP_NAME</span>-ը Heroku-ում ստեղծված հավելվածի անունն է, որը կարելի է գտնել հետևյալ էջում՝</p>
+        <img alt="" src="/images/her-4.webp">
+        <p><span class="bold">DYNO_NAME</span>-ը տվյալ պրոցեսի անունն է, որը սահմանված է լինում բնութագրիչ ֆայլում(Procfile)։ Մեր դեպքում այն կլինի worker.1։</p>
+        <p>Բացի այս երկուսից մեզ անհրաժեշտ է նաև բանալի առանց որի հնարավոր չէ հարցումներ կատարել նշված API մեթոդին։ Վերջինս կարելի է գտնել այս էջում՝</p>
+        <img alt="" src="/images/her-5.webp">
+        <p>Այժմ կատարենք հետևյալ փոփոխությունները վերոնշյալ NodeJS ծրագրում՝</p>
+        <ul>
+            <li>սահմանենք <span class="code">restartMe()</span> մեթոդը և կանչենք նրան բոլոր այն խափանումների դեպքում, երբ խափանման կոդը 429 է</li>
+            <li><span class="code">restartMe()</span> մեթոդի ներսում, <span class="code">heroku-client</span> գրադարանի միջոցով կատարենք HTTP կանչ վերևում նշված հասցեին, որի արդյունքում էլ սերվերը կվերսկսվի։</li>
+        </ul>
+        <img alt="" src="/images/her-6.webp">
+
+        <h2>Տեղադրենք և կարգավորենք։</h2>
+        <p>Մինչ ծրագրի տեղադրումը Heroku համակարգ, ստեղծենք ևս մեկ ֆայլ, որը կպարունակի սերվերի սկսման հրամանի կանչը։ Այդ ֆայլի անունը պետք է լինի <span class="bold">Procfile</span>, քանի որ համակարգը հաշվի է առնեւմ հենց այդ անունով բնութագրիչ ֆայլը։</p>
+        <pre><code class="language-text">worker: node ip-script.js</code></pre>
+        <p>Չմոռանանք նաև տեղադրել անհրաժեշտ փոփոխականները (անուններ, բանալի), որպեսզի <span class="code">restartMe()</span> մեթոդը կարողանա վերսկսել սերվերի աշխատանքը։ Դրանք կարելի է տեղադրել Heroku-ի կայքում, տվյալ սերվերի կարգավորումներում։</p>
+        <img alt="" src="/images/her-7.webp">
+        <p>Այժմ հետևյալ հրմանների միջոցով տեղադրենք ստացված ծրագիրը Heroku համակարգում։</p>
+        <pre><code class="language-shell">$ heroku login
+
+$ cd your-project-folder
+$ git init
+$ heroku git:remote -a your-app-name
+
+$ git add .
+$ git commit -am "Initial commit"
+$ git push heroku master</code></pre>
+        <p>Ահա ծրագրի աշխատանքի արդյունքը։ Կարելի է նկատել, որ յուրաքանչյուր անգամ երբ 429 կոդով խափանում է տեղի ունենում, ծրագիրը վերսկսվում է և որի արդյունքում էլ սերվերի IP հասցեն փոփոխվում է։</p>
+        <img alt="" src="/images/her-8.gif">
+        <p>NodeJS ծրագրի ամբողջական տարբերակը՝</p>
+        <pre><code class="language-javascript">const axios = require('axios');
+const Heroku = require('heroku-client');
+
+const heroku = new Heroku({ token: process.env.API_KEY })
+
+const URLS = [
+  'https://api.myip.com/?id=1',
+  'https://api.myip.com/?id=2',
+  'https://api.myip.com/?id=3',
+  'https://api.myip.com/?id=4',
+  'https://api.myip.com/?id=5',
+  'https://api.myip.com/?id=6',
+  'https://api.myip.com/?id=7',
+];
+
+function throwRateLimitErrorIfNeeded(url) {
+  if (url.includes('id=5')) {
+    const err = new Error('Rate limit exceeded');
+    err.status = 429;
+    throw err;
+  }
+}
+
+
+async function main() {
+  try {
+    for await (const url of URLS) {
+      const response = await axios.get(url);
+      console.log(`URL: ${url} (${response.data.ip})`);
+
+      throwRateLimitErrorIfNeeded(url);
+    }
+  } catch (err) {
+    console.log(err.message);
+    if (err.status === 429) {
+      await restartMe();
+    }
+  }
+}
+
+async function restartMe() {
+  console.log('Restarting myself..')
+  await heroku.delete(`/apps/${process.env.APP_NAME}/dynos/${process.env.DYNO_NAME}.1`);
+}
+
+main();</code></pre>
+    </div>
+</div>
+
+</body>
+</html>
