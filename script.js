@@ -13,6 +13,14 @@ var menuItems = [
     background: 'linear-gradient(96deg, rgb(255 255 255) 42%, rgb(255 0 0) 100%)'
   },
   {
+    title: 'Powerful Aggregation Framework of MongoDB',
+    description: 'As it’s known, MongoDB is a document-oriented database with lots of powerful features and advantages. One of those powerful features is the aggregation framework of MongoDB.',
+    image: '/images/ap-h.png',
+    link: '/articles/powerful-aggregation-framework-of-mongodb',
+    dateString: 'Jul 30, 2021',
+    background: 'linear-gradient(176deg, rgb(254 255 254) 42%, #8BC34A 100%)'
+  },
+  {
     title: 'Management of environment files using CircleCI contexts',
     description: 'In this article I have described a mechanism which allows to facilitate management of .env files by using CircleCI contexts and a little bit scripting.',
     image: '/images/ci-1.png',

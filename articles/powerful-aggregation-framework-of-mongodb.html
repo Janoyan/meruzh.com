@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGJSF7C84Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JGJSF7C84Y');
+    </script>
+
+
+    <title>Powerful Aggregation Framework of MongoDB</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2021-07-30T00:00:00.000Z"/>
+    <meta name="title" content="Powerful Aggregation Framework of MongoDB"/>
+    <meta property="og:title" content="Powerful Aggregation Framework of MongoDB"/>
+    <meta name="description"
+          content="As it’s known, MongoDB is a document-oriented database with lots of powerful features and advantages. One of those powerful features is the aggregation framework of MongoDB."/>
+    <meta property="og:description"
+          content="As it’s known, MongoDB is a document-oriented database with lots of powerful features and advantages. One of those powerful features is the aggregation framework of MongoDB."/>
+    <meta property="og:url" content="https://meruzh.com/articles/powerful-aggregation-framework-of-mongodb"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/powerful-aggregation-framework-of-mongodb"/>
+    <meta property="og:image" content="/images/ap-h.png"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Powerful Aggregation Framework of MongoDB"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description"
+          content="As it’s known, MongoDB is a document-oriented database with lots of powerful features and advantages. One of those powerful features is the aggregation framework of MongoDB."/>
+    <meta name="twitter:image:src" content="/images/ap-h.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="en-us">
+
+
+    <link rel="stylesheet" href="/intellij-light.min.css">
+    <script src="/highlight.min.js"></script>
+    <script src="/highlightjs-line-numbers.min.js"></script>
+    <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+
+
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1699193109">
+    <script src="/script.js?jan_v=1699193109"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <style>
+        p.note {
+            background-color: #fff2b6;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Powerful Aggregation Framework of MongoDB</h1>
+        <h2>Introduction</h2>
+        <p>As it’s known, MongoDB is a document-oriented database with lots of powerful features and advantages. One of those powerful features is the aggregation framework of MongoDB.</p>
+        <p>The main purpose of the aggregation framework is to process data records and return computed results. When using aggregation pipelines, it’s possible to group documents, perform a variety of arithmetical and other operations, perform left join within a database, merge collections, and a bunch of similar cool things.</p>
+
+        <h2>The structure of the aggregation pipeline</h2>
+        <p>For performing aggregations, it’s required to have a pipeline, which consists of many stages. Documents sequentially pass through the stages, transforming the document with each stage and passing it onto the next stage. Stages can contain various pipeline operators for working with arrays, strings, dates, etc.</p>
+        <img alt="" src="/images/ap.gif">
+        <p>When initiating an aggregation, it’s enough to run the following mongo shell command:</p>
+        <pre><code class="language-javascript">db.getCollection(collectionName).aggregate(pipeline)</code></pre>
+
+        <p>where <span class="code">collectionName</span> is the name of the collection on which needs to be run aggregation pipeline and <span class="code">pipeline</span> is an aggregation pipeline(array of stages).</p>
+
+        <h2>Left join using $lookup</h2>
+        <img alt="" src="/images/ap-1.webp">
+        <p><span class="code">$lookup</span> stage lets “join” a collection by performing an equality match between fields of current and “joined” collections. This stage requires specifying some key options such as collection and field names.</p>
+        <p>In this case, we need to add a new books array to the documents of the current collection by selecting documents from the <span class="code">books</span> collections based on the <span class="code">bookIds</span> array.</p>
+        <img alt="" src="/images/ap-2.webp">
+        <p>where:</p>
+        <p><span class="code">from</span> : ” joined” collection name</p>
+        <p><span class="code">localField</span> : local field name which will be used for an equality match</p>
+        <p><span class="code">foreignField</span> : field name in “joined” collection which will be used for an equality match</p>
+        <p><span class="code">as</span> : output field name</p>
+
+        <h2>Categorizing documents using $group and $unwind</h2>
+        <img alt="" src="/images/ap-3.webp">
+        <p>There are lots of cases when we need to categorize documents based on some criteria and one of the ways to do it is by using <span class="code">$unwind</span> and <span class="code">$group</span> stages.</p>
+        <p>For example, let’s say that there are users who have specified the list of their favorite books. We need a pipeline that will create separate documents for each book where each document will contain a list of users who like that book.</p>
+        <img alt="" src="/images/ap-4.webp">
+
+        <p>Since user documents only contain object IDs of their favorite books, in the pipeline above we used <span
+                class="code">$lookup</span> stage to bring full objects of books into the <span
+                class="code">books</span> array.</p>
+
+        <p>By using <span class="code">$unwind</span> stage we deconstruct user documents and reconstruct them by using <span class="code">$group</span> stage. Inside <span class="code">$group</span> stage we accumulate names of users into the <span
+                    class="code">users</span> array.</p>
+
+        <h2>Categorizing documents using $bucketAuto</h2>
+        <img alt="" src="/images/ap-5.webp">
+        <p>Another stage that lets to categorize documents is <span class="code">$bucketAuto</span>. It automatically defines buckets based on given parameters and group documents based on <span class="italic">min/max</span> ranges.</p>
+        <p>In this case, we want to categorize users based on their book count. As you can see, there are three buckets defined in the <span class="bold">output</span> section where each bucket has <span class="italic">min</span> and <span class="italic">max</span> ranges:</p>
+
+        <ul>
+            <li>bucket 1 [1, 2)</li>
+            <li>bucket 2 [2, 4)</li>
+            <li>bucket 3 [4]</li>
+        </ul>
+        <img alt="" src="/images/ap-6.webp">
+        <p>There are two stages used in the pipeline above, <span class="code">$addFields</span> which adds book counts for each user document and <span class="code">$bucketAuto</span> which groups documents by <span class="code">booksCount</span> field.</p>
+        <p>In the <span class="code">$bucketAuto</span> stage specified the following fields:</p>
+        <p><span class="code">groupBy</span> : the field name by which documents should be grouped (can be an expression as well)</p>
+        <p><span class="code">buckets</span> : maximum count of buckets</p>
+        <p><span class="code">output</span> : an output document specification</p>
+
+        <h2>Multiple pipelines in a single stage using $facet</h2>
+        <img alt="" src="/images/ap-7.webp">
+        <p>For this case, we want to combine multiple pipelines into a single stage. As an output of aggregation, we need to have two arrays of grouped users, one grouped by book count and another grouped by book IDs.</p>
+        <img alt="" src="/images/ap-8.webp">
+        <p>In the pipeline above, in <span class="code">$facet</span> stage, we defined two pipelines named <span class="italic">groupedByBooksCount</span> and <span class="italic">groupedByBooks</span>. After executing, the output of each pipeline will be stored in the appropriate key.</p>
+
+        <h2>Location queries using $geoNear</h2>
+        <img alt="" src="/images/ap-9.webp">
+        <p>As it’s said in the documentation, <span class="code">$geoNear</span> outputs documents in order of nearest to farthest from a specified point.</p>
+        <p>In this example, we have a collection called <span class="code">cities</span> where each document contains a name and the coordinates of a specific city. One of the cities in that collection is Yerevan. We need to add a new field to all the documents that will tell the distance between Yerevan and the current city location.</p>
+        <img alt="" src="/images/ap-10.webp">
+        <p>In the pipeline above the <span class="code">coordinates</span> array contains geographic coordinates of Yerevan. Value of <span class="code">distanceField</span> is a field name that will contain distance between two cities and <span class="code">distanceMultiplier</span> is for converting distance from meters to kilometers.</p>
+        <p class="note"><span class="bold">Note:</span> To use <span class="bold">$geoNear</span> stage, on the coordinates field must be created <span class="bold">2d</span> or <span class="bold">2dsphere</span> index.</p>
+
+        <h2>Recursive search using $graphLookup</h2>
+        <img alt="" src="/images/ap-11.webp">
+        <p>Using <span class="code">$graphLookup</span> it’s possible to perform a recursive search on a collection. It recursively populates all the connected documents based on specified fields.</p>
+
+        <p>In this example <span class="code">$graphLookup</span> operation recursively matches on the <span class="code">reportsTo</span> and <span class="code">name</span> fields in the <span class="code">users</span> collection, returning the reporting hierarchy for each user:</p>
+        <img alt="" src="/images/ap-12.webp">
+        <p>In the pipeline above there are three stages:</p>
+        <p><span class="code">$graphLookup</span> — recursively finds related documents and output them into <span class="code">reportingHierarchy</span> array</p>
+        <p><span class="code">$unwind</span> — deconstruct added <span class="code">reportingHierarchy</span> array</p>
+        <p><span class="code">$group</span> — reconstruct documents and overrides existing <span class="code">reportingHierarchy</span> array leaving only user names</p>
+
+        <h2>Storing pipeline output to a collection using $out</h2>
+        <p>This stage takes the documents returned by the aggregation pipeline and writes them to a specified collection.</p>
+        <p class="note"><span class="bold">Note:</span> The <span class="bold">$out</span> stage must be the last stage in the pipeline</p>
+        <img alt="" src="/images/ap-13.webp">
+        <p>In this specific example, we added <span class="code">$out</span> stage at the end of the pipeline that will save the output of the last stage into distances collection in the same database.</p>
+
+        <h2>Conclusion</h2>
+        <p>In this article, we covered very few features of the aggregation framework of MongoDB. For deep learning, I suggest having a look at the official documentation and do some practice work using a test database.</p>
+    </div>
+</div>
+
+</body>
+</html>
