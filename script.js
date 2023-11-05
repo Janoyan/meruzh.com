@@ -5,6 +5,14 @@ window.alwaysOpen = false;
 
 var menuItems = [
   {
+    title: 'Մեղսավոր ծրագրավորող',
+    description: 'Այս հոդվածում անդրադարձել եմ պատճառաբանությունների, որոնց հանդիպել եմ, որոնք հենց իմ մոտ են ի հայտ եկել, կամ որոնցով ուրիշներն են արդարացել կապված վատ կոդ գրելու հետ։',
+    image: '/images/gp-1.webp',
+    link: '/articles/guilty-programmer-arm',
+    dateString: 'Հունվար 21, 2023թ.',
+    background: 'linear-gradient(246deg, rgb(224 245 151) 42%, rgb(255 255 255) 100%);'
+  },
+  {
     title: 'GUILTY programmer',
     description: 'This article delves into the various reasons why experienced programmers may struggle to consistently write clean code, including factors like team dynamics, legacy code, motivation, and code review practices.',
     image: '/images/gp-1.webp',
