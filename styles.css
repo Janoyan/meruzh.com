@@ -360,9 +360,8 @@ div.divider {
 #container p.dialogue > span {
     font-style: italic;
     padding: 10px 5%;
-    margin: 0;
+    margin: 4px 0;
     display: block;
-    box-shadow: inset -1px 0 12px 13px #ffffff;
     width: fit-content;
     border-radius: 10px 60px 10px 60px;
 }

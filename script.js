@@ -5,6 +5,14 @@ window.alwaysOpen = false;
 
 var menuItems = [
   {
+    title: 'WARRIOR’S CODE',
+    description: 'The article explores the intriguing parallels between a software developer\'s role and that of a warrior. As two characters discuss their predicament in the world of programming, they touch upon the developer\'s unwavering principles, time management strategies, and the creation of utility programs.',
+    image: '/images/wc-1.webp',
+    link: '/articles/warriors-code',
+    dateString: 'June 17, 2022',
+    background: 'linear-gradient(96deg, rgb(255 255 255) 42%, rgb(255 0 0) 100%)'
+  },
+  {
     title: 'Management of environment files using CircleCI contexts',
     description: 'In this article I have described a mechanism which allows to facilitate management of .env files by using CircleCI contexts and a little bit scripting.',
     image: '/images/ci-1.png',
