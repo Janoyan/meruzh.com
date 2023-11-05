@@ -5,6 +5,14 @@ window.alwaysOpen = false;
 
 var menuItems = [
   {
+    title: 'GUILTY programmer',
+    description: 'This article delves into the various reasons why experienced programmers may struggle to consistently write clean code, including factors like team dynamics, legacy code, motivation, and code review practices.',
+    image: '/images/gp-1.webp',
+    link: '/articles/guilty-programmer',
+    dateString: 'Jan 21, 2023',
+    background: 'linear-gradient(230deg, rgb(96 177 255) 42%, rgb(255 255 255) 100%)'
+  },
+  {
     title: 'Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ',
     description: 'Հոդվածում նկարագրվում է մի մեթոդ, որով կարելի է փոփոխել server-ի IP հասցեն անհրաժեշտությունից ելնելով։',
     image: '/images/iph.png',
