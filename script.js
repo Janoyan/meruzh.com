@@ -13,6 +13,14 @@ var menuItems = [
     background: 'linear-gradient(96deg, rgb(255 255 255) 42%, rgb(255 0 0) 100%)'
   },
   {
+    title: 'ՄԱՐՏԻԿԻ ԿԱՆՈՆՆԵՐԸ',
+    description: 'Վճարիր գործիքներիդ համար, Բարձր արտադրողականության ժամանակահատված, Ստեղծիր օգնականներ, Միշտ ունեցիր անելիք։',
+    image: '/images/wca-1.webp',
+    link: '/articles/warriors-code-arm',
+    dateString: 'Հունիս 17, 2022թ.',
+    background: 'linear-gradient(271deg, rgb(255 255 255) 42%, rgb(184 23 17) 100%);'
+  },
+  {
     title: 'Powerful Aggregation Framework of MongoDB',
     description: 'As it’s known, MongoDB is a document-oriented database with lots of powerful features and advantages. One of those powerful features is the aggregation framework of MongoDB.',
     image: '/images/ap-h.png',
