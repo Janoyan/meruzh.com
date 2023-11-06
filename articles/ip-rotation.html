@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGJSF7C84Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'G-JGJSF7C84Y');
+    </script>
+
+    <title>IP Rotation with NodeJS and Heroku</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2022-04-11T00:00:00.000Z"/>
+    <meta name="title" content="IP Rotation with NodeJS and Heroku"/>
+    <meta property="og:title" content="IP Rotation with NodeJS and Heroku"/>
+    <meta name="description"
+          content="The article describes a method by which the IP address of the server can be changed based on the need."/>
+    <meta property="og:description"
+          content="The article describes a method by which the IP address of the server can be changed based on the need."/>
+    <meta property="og:url" content="https://meruzh.com/articles/ip-rotation"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/ip-rotation"/>
+    <meta property="og:image" content="/images/here.jpeg"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="IP Rotation with NodeJS and Heroku"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description"
+          content="The article describes a method by which the IP address of the server can be changed based on the need."/>
+    <meta name="twitter:image:src" content="/images/here.jpeg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="en-us">
+
+
+
+    <link rel="stylesheet" href="/intellij-light.min.css">
+    <script src="/highlight.min.js"></script>
+    <script src="/highlightjs-line-numbers.min.js"></script>
+    <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1699294504">
+    <script src="/script.js?jan_v=1699294504"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>IP Rotation with NodeJS and Heroku</h1>
+
+        <p>Recently I had an interesting idea related to data analysis. To bring to life the idea it was needed to have certain data in the database that would be used in various analyses.</p>
+
+        <p>At the first glance, it was an easy task to scrape necessary data from a social site and store it in the database. However, after some activity from our side, the social site has blocked an IP address from where requests were coming.</p>
+
+        <p>Eventually, by trying various methods, I was able to solve the problem. In this article, I described one of the more interesting solutions that helped me in that situation.</p>
+
+        <h2>What we want to do ?</h2>
+        <img alt="" src="/images/her-1.gif" style="max-width: 700px">
+        <p>Our goal is to have a script in NodeJS that would be deployed to Heroku and which would make many HTTP requests to the defined list of URLs. It also needs to be able to change its own IP address if it will be necessary.</p>
+        <p>The mechanism solely is based on the feature of Heroku where Heroku changes the IP addresses of its dynos on each restart.</p>
+
+        <h2>At first NodeJS script.</h2>
+        <p>Let's start with a small script in NodeJS that would make requests to a defined list of URLs and will log received responses. The script also needs to have a proper error handling mechanism that would catch all the errors regarding rate limitations.</p>
+        <img alt="" src="/images/her-2.webp">
+        <p>In the script above, after a certain amount of requests, we artificially raise the rate limitation error. We do it just to be able to show how the IP rotation mechanism works. So that should not be included in real applications.</p>
+        <p>After running the script you will get something like this:</p>
+        <img alt="" src="/images/her-3.gif">
+        <p>As you can see in the script logs, all the defined URLs as a response return the IP address of the current machine.</p>
+
+        <h2>Restart. IP Rotation.</h2>
+        <p>Now let's get back to the IP rotation mechanism.</p>
+        <p>As already has been said, Heroku has a feature(at the time of writing this article) where it always changes the IP addresses of its dynos whenever they are being restarted.</p>
+        <p>So by leveraging that feature each time when it would be needed to change the IP address of the server, we will just restart it.</p>
+        <p>There is a REST API provided by Heroku. It lets automate some processes in the Heroku infrastructure. In our case, we need an endpoint, that would let us restart a dyno just by making an HTTP request. And here is that method:</p>
+        <p class="quote">DELETE /apps/{APP_NAME}/dynos/{DYNO_ID_OR_NAME}</p>
+        <p>Where:</p>
+        <p><span class="bold">APP_NAME</span> is the name of the application created in Heroku. You can find it in this page:</p>
+        <img alt="" src="/images/her-4.webp">
+        <p><span class="bold">DYNO_NAME</span> is the name of the dyno. It is defined in the Procfile. In our case it will be "worker.1".</p>
+        <p>Besides those two we also need an API key that would let us pass authentication of Heroku APIs.You can find it in this page:</p>
+        <img alt="" src="/images/her-5.webp">
+        <p>Now let's make the following changes in our NodeJS script:</p>
+        <p>1. define a method with a name <span class="code">restartMe()</span> and call it each time when an error with a status code <span class="bold">429</span> occurred</p>
+        <p>2. inside of <span class="code">restartMe()</span> method by using a package <span class="bold">heroku-client</span> let's make an HTTP request to the Heroku endpoint mentioned above. As a result, it will restart the server.</p>
+        <img alt="" src="/images/her-6.webp">
+
+        <h2>Let's Deploy and Configure</h2>
+        <p>Before deploying the script to Heroku there is something we need to do. We need to create a file that will contain the command of starting our script. The name of the file must be <span class="bold">Procfile</span>, as Heroku accept a configuration file only with that name.</p>
+        <pre><code class="language-text">worker: node ip-script.js</code></pre>
+        <p>We also need to set necessary environment variables so <span class="code">restartMe()</span> method can successfully restart the server. That is possible to do in the Heroku application's dashboard:</p>
+        <img alt="" src="/images/her-7.webp">
+        <p>Now using the commands below let's deploy the script to the Heroku.</p>
+        <pre><code class="language-shell">$ heroku login
+
+$ cd your-project-folder
+$ git init
+$ heroku git:remote -a your-app-name
+
+$ git add .
+$ git commit -am "Initial commit"
+$ git push heroku master</code></pre>
+        <p>Here is the result of the script. As it can be noticed each time when the error with a status code <span class="bold">429</span> occurs, it's being restarted and the IP address is being changed.</p>
+        <img alt="" src="/images/her-8.gif">
+        <p>The entire script:</p>
+        <pre><code class="language-javascript">const axios = require('axios');
+const Heroku = require('heroku-client');
+
+const heroku = new Heroku({ token: process.env.API_KEY })
+
+const URLS = [
+  'https://api.myip.com/?id=1',
+  'https://api.myip.com/?id=2',
+  'https://api.myip.com/?id=3',
+  'https://api.myip.com/?id=4',
+  'https://api.myip.com/?id=5',
+  'https://api.myip.com/?id=6',
+  'https://api.myip.com/?id=7',
+];
+
+function throwRateLimitErrorIfNeeded(url) {
+  if (url.includes('id=5')) {
+    const err = new Error('Rate limit exceeded');
+    err.status = 429;
+    throw err;
+  }
+}
+
+
+async function main() {
+  try {
+    for await (const url of URLS) {
+      const response = await axios.get(url);
+      console.log(`URL: ${url} (${response.data.ip})`);
+
+      throwRateLimitErrorIfNeeded(url);
+    }
+  } catch (err) {
+    console.log(err.message);
+    if (err.status === 429) {
+      await restartMe();
+    }
+  }
+}
+
+async function restartMe() {
+  console.log('Restarting myself..')
+  await heroku.delete(`/apps/${process.env.APP_NAME}/dynos/${process.env.DYNO_NAME}.1`);
+}
+
+main();</code></pre>
+    </div>
+</div>
+
+</body>
+</html>

@@ -7,7 +7,7 @@ var menuItems = [
   {
     title: 'Մեղսավոր ծրագրավորող',
     description: 'Այս հոդվածում անդրադարձել եմ պատճառաբանությունների, որոնց հանդիպել եմ, որոնք հենց իմ մոտ են ի հայտ եկել, կամ որոնցով ուրիշներն են արդարացել կապված վատ կոդ գրելու հետ։',
-    image: '/images/gp-1.webp',
+    image: '/images/g-arm.jpg',
     link: '/articles/guilty-programmer-arm',
     dateString: 'Հունվար 21, 2023թ.',
     background: 'linear-gradient(246deg, rgb(224 245 151) 42%, rgb(255 255 255) 100%);'
@@ -19,14 +19,6 @@ var menuItems = [
     link: '/articles/guilty-programmer',
     dateString: 'Jan 21, 2023',
     background: 'linear-gradient(230deg, rgb(96 177 255) 42%, rgb(255 255 255) 100%)'
-  },
-  {
-    title: 'Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ',
-    description: 'Հոդվածում նկարագրվում է մի մեթոդ, որով կարելի է փոփոխել server-ի IP հասցեն անհրաժեշտությունից ելնելով։',
-    image: '/images/iph.png',
-    link: '/articles/ip-rotation-arm',
-    dateString: 'Դեկտեմբեր 10, 2022թ.',
-    background: 'linear-gradient(356deg, rgb(224 224 224) 42%, rgb(255 255 255) 100%);'
   },
   {
     title: 'WARRIOR’S CODE',
@@ -43,6 +35,22 @@ var menuItems = [
     link: '/articles/warriors-code-arm',
     dateString: 'Հունիս 17, 2022թ.',
     background: 'linear-gradient(271deg, rgb(255 255 255) 42%, rgb(184 23 17) 100%);'
+  },
+  {
+    title: 'IP Rotation with NodeJS and Heroku',
+    description: 'The article describes a method by which the IP address of the server can be changed based on the need.',
+    image: '/images/here.jpeg',
+    link: '/articles/ip-rotation',
+    dateString: 'April 11, 2022թ.',
+    background: 'linear-gradient(292deg, rgb(240 241 244) 42%, rgb(37 148 146) 100%)'
+  },
+  {
+    title: 'Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ',
+    description: 'Հոդվածում նկարագրվում է մի մեթոդ, որով կարելի է փոփոխել server-ի IP հասցեն անհրաժեշտությունից ելնելով։',
+    image: '/images/iph.png',
+    link: '/articles/ip-rotation-arm',
+    dateString: 'Ապրիլ 11, 2022թ.',
+    background: 'linear-gradient(356deg, rgb(224 224 224) 42%, rgb(255 255 255) 100%);'
   },
   {
     title: 'Powerful Aggregation Framework of MongoDB',
