@@ -53,6 +53,14 @@ var menuItems = [
     background: 'linear-gradient(356deg, rgb(224 224 224) 42%, rgb(255 255 255) 100%);'
   },
   {
+    title: 'Testing Asynchronous Events Using Manual Promise',
+    description: 'In the article is described one of the ways I used for testing asynchronous logic of applications.',
+    image: '/images/as1.jpeg',
+    link: '/articles/testing-asynchronous-events-using-manual-promise',
+    dateString: 'Dec 15, 2021',
+    background: 'linear-gradient(301deg, rgb(254 255 254) 42%, #1a7fa5 100%);'
+  },
+  {
     title: 'Powerful Aggregation Framework of MongoDB',
     description: 'As it’s known, MongoDB is a document-oriented database with lots of powerful features and advantages. One of those powerful features is the aggregation framework of MongoDB.',
     image: '/images/ap-h.png',

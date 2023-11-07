@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGJSF7C84Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JGJSF7C84Y');
+    </script>
+
+    <title>Testing Asynchronous Events Using Manual Promise</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2021-12-15T00:00:00.000Z"/>
+    <meta name="title" content="Testing Asynchronous Events Using Manual Promise"/>
+    <meta property="og:title" content="Testing Asynchronous Events Using Manual Promise"/>
+    <meta name="description"
+          content="In the article is described one of the ways I used for testing asynchronous logic of applications."/>
+    <meta property="og:description"
+          content="In the article is described one of the ways I used for testing asynchronous logic of applications."/>
+    <meta property="og:url" content="https://meruzh.com/articles/testing-asynchronous-events-using-manual-promise"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/testing-asynchronous-events-using-manual-promise"/>
+    <meta property="og:image" content="/images/as1.jpeg"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Testing Asynchronous Events Using Manual Promise"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description"
+          content="In the article is described one of the ways I used for testing asynchronous logic of applications."/>
+    <meta name="twitter:image:src" content="/images/as1.jpeg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="en-us">
+
+
+
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1699383033">
+    <script src="/script.js?jan_v=1699383033"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Testing Asynchronous Events Using Manual Promise</h1>
+        <p>in auction feature. The project itself was interesting and a little bit tricky, but we could successfully complete it. We have done it using NodeJS with Express framework. </p>
+
+        <p>Simultaneously to new features we were adding integration tests for each endpoint, by handling various cases. As a testing framework, we were using <a href="https://www.npmjs.com/package/mocha" target="_blank">mocha</a>.</p>
+
+        <img alt="" src="/images/as2.gif">
+
+        <p>One of the tricky things was the testing of the “auction ended” event that was emitted after the auction end date was reached. We were needed to create a mechanism that would somehow await the event and based on results pass or fail the test case.</p>
+
+        <p>As a solution, we decided to use a modified version of the javascript promise class. We created a new class called "ManualPromise" which looked like this:</p>
+
+        <img alt="" src="/images/as3.jpeg">
+
+        <p>And that was it, in the test cases, we were just creating instances of the "ManualPromise" class and resolving or rejecting them whenever it was needed. </p>
+
+        <p>Here is the example usage of "ManualPromise" that awaits and handles the “auction end” event : </p>
+
+        <img alt="" src="/images/as4.gif">
+
+    </div>
+</div>
+
+</body>
+</html>
