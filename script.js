@@ -61,6 +61,14 @@ var menuItems = [
     background: 'linear-gradient(176deg, rgb(254 255 254) 42%, #8BC34A 100%)'
   },
   {
+    title: 'Programming Prolongs Life',
+    description: 'In this short article I shared my thoughts about creativity and how it\'s related to programming.',
+    image: '/images/pp1.jpeg',
+    link: '/articles/programming-prolongs-life',
+    dateString: 'July 10, 2021',
+    background: 'linear-gradient(148deg, rgb(254 255 254) 42%, #97730f 100%);'
+  },
+  {
     title: 'Monolithic Apps With The Intent Of Microservices',
     description: 'Microservices are great but they can complicate your work when you\'re not sure what your app will become eventually. Sometimes having monolithic app is better choice.',
     image: '/images/ma1.jpeg',
