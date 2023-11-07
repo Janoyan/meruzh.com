@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGJSF7C84Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JGJSF7C84Y');
+    </script>
+
+    <title>Cloud Services VS Fake Startup Ideas</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2021-03-21T00:00:00.000Z"/>
+    <meta name="title" content="Cloud Services VS Fake Startup Ideas"/>
+    <meta property="og:title" content="Cloud Services VS Fake Startup Ideas"/>
+    <meta name="description"
+          content="An article about how to use free tiers of cloud services to release MVPs of your startup ideas."/>
+    <meta property="og:description"
+          content="An article about how to use free tiers of cloud services to release MVPs of your startup ideas."/>
+    <meta property="og:url" content="https://meruzh.com/articles/cloud-services-vs-fake-startup-ideas"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/cloud-services-vs-fake-startup-ideas"/>
+    <meta property="og:image" content="/images/cloud-1.png"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Cloud Services VS Fake Startup Ideas"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description"
+          content="An article about how to use free tiers of cloud services to release MVPs of your startup ideas."/>
+    <meta name="twitter:image:src" content="/images/cloud-1.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="en-us">
+
+
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1699369141">
+    <script src="/script.js?jan_v=1699369141"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Cloud Services VS Fake Startup Ideas</h1>
+
+        <p>I know lots of programmers whose thoughts are always full of various startup ideas. In most cases they think they have great ideas but don’t have enough time and money to bring them to life. Usually such people think their ideas are unique and will blow up the market right after they go live.</p>
+
+        <p>Unfortunately, or fortunately, it isn’t. Unfortunately, or fortunately, I’m one of them.</p>
+
+        <p>Ideas come and go very often and don’t let us focus on a single one. In my opinion 99% of all startup ideas are fake and only 1% have a chance to become successful businesses.</p>
+
+        <p class="quote">One of the ways which can be useful for getting rid of fake ideas from your thoughts is doing them.</p>
+
+        <p>Startup Ideas show their fakeness when you start work on them or in some cases after going live. It’s possible to detect fakeness of ideas during a couple of minutes discussion but can be cases when you can’t detect it even after years of having them live.</p>
+
+        <img alt="" src="/images/cloud-2.gif" style="max-width: 700px">
+
+        <p>I want to share my latest experience of bringing to life one of my startup ideas. It doesn’t matter what the idea is and how successful it is. The purpose of this article is sharing experience of having live applications without paying so much money to various cloud services.</p>
+
+        <p>So the first release of my application was in Feb 2020. As it had microservices architecture, initially I decided to deploy services on separated vm instances on Google Cloud Platforms (GCP).</p>
+        <p>The cost of having live version of the application was around 💰37$/month, where:</p>
+
+        <ul>
+            <li>An instance for MongoDB (1GB RAM) ~ 6$</li>
+            <li>An instance for ElasticSearch (4GB RAM) ~ 25$</li>
+            <li>An instance for running 2 NodeJS applications (1GB RAM) ~ 6$</li>
+        </ul>
+        <img alt="" src="/images/cloud-3.png">
+
+        <p>I was almost convinced that after launching the application, within a month I will get that the idea is a fake and give up. But it isn’t. Without any paid advertising and marketing tricks, just by sharing it in a couple of groups few people started to use it. More than a year has passed and there is a group of users which still use it many times in a week and sometimes every day. </p>
+
+        <p>After six months of having the architecture above deployed on GCP I eventually decided optimise it for lower cost. </p>
+
+        <p>The first thing that I did was using the services of MongoDB Atlas. Instead of having a dedicated vm instance for MongoDB I set up a shared cluster with 512MB RAM by subscribing to the free tier of MongoDB Atlas. It decreased the monthly cost of my application by 6$.</p>
+
+        <img alt="" src="/images/cloud-4.png">
+
+        <p>Instead of having ElasticSearch deployed to the vm instance I moved to Azure Cognitive Search. Thanks Azure for having a free tier of Cognitive Search. This decreased the monthly cost of my application by 25$.</p>
+
+        <img alt="" src="/images/cloud-5.png">
+
+        <p>GCP has great things such as Cloud Functions and Cloud Run which provide some amount of resources for free. One of the NodeJS applications which actually is an API service I have deployed as a cloud function. For the second application I’ve created a docker image and deployed to Cloud Run. I have reduced monthly payments of my application to💰0.1$.</p>
+
+        <img alt="" src="/images/cloud-6.png">
+
+        <p>Now I can wait as long as it will be needed to understand if my idea is a fake or not. My application is running smoothly without any interferences. I no longer spend any time or money on it, I just once a day check Google Analytics to see if people still use it, or it's time to get rid of it.</p>
+    </div>
+</div>
+
+</body>
+</html>

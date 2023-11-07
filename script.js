@@ -69,6 +69,14 @@ var menuItems = [
     background: 'linear-gradient(71deg, rgb(254 255 254) 42%, rgb(0 5 201) 100%);'
   },
   {
+    title: 'Cloud Services VS Fake Startup Ideas',
+    description: 'An article about how to use free tiers of cloud services to release MVPs of your startup ideas.',
+    image: '/images/cloud-1.png',
+    link: '/articles/cloud-services-vs-fake-startup-ideas',
+    dateString: 'March 21, 2021',
+    background: 'linear-gradient(185deg, rgb(254 255 254) 42%, #eeef03 100%);'
+  },
+  {
     title: 'Six tips to speed up Node.js Apps development',
     description: 'This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren\'t only six tips, of course, I\'ve only listed the six most important ones according to my experience.',
     image: '/images/node-js.jpg',
