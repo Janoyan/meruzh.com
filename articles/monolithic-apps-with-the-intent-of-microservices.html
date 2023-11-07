@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGJSF7C84Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JGJSF7C84Y');
+    </script>
+
+    <title>Monolithic Apps With The Intent Of Microservices</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2021-03-22T00:00:00.000Z"/>
+    <meta name="title" content="Monolithic Apps With The Intent Of Microservices"/>
+    <meta property="og:title" content="Monolithic Apps With The Intent Of Microservices"/>
+    <meta name="description"
+          content="Microservices are great but they can complicate your work when you're not sure what your app will become eventually. Sometimes having monolithic app is better choice."/>
+    <meta property="og:description"
+          content="Microservices are great but they can complicate your work when you're not sure what your app will become eventually. Sometimes having monolithic app is better choice."/>
+    <meta property="og:url" content="https://meruzh.com/articles/monolithic-apps-with-the-intent-of-microservices"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/monolithic-apps-with-the-intent-of-microservices"/>
+    <meta property="og:image" content="/images/ma1.jpeg"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Monolithic Apps With The Intent Of Microservices"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description"
+          content="Microservices are great but they can complicate your work when you're not sure what your app will become eventually. Sometimes having monolithic app is better choice."/>
+    <meta name="twitter:image:src" content="/images/ma1.jpeg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="en-us">
+
+
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1699370335">
+    <script src="/script.js?jan_v=1699370335"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Monolithic Apps With The Intent Of Microservices</h1>
+        <p>Microservices are great but they can complicate your work when you're not sure what your app will become eventually.</p>
+        <p>Such situations mostly happen when your customers have some startup ideas (and not only startup) and they want you to quickly make them MVP. Here developers usually want to make the best architecture for the application whereas customers want just a working application in a short time. Both sides look at the same thing from their point of view and I think they both are right. </p>
+        <p>Here is what I think about choosing right architecture for different cases.</p>
+        <img alt="" src="/images/ma2.gif">
+        <p>I’d go with microservices architecture when requirements meet these conditions:</p>
+        <ul>
+            <li>Application should be scalable.</li>
+            <li>There are at least six months before the release date.</li>
+            <li>Clear and fixed application requirements at least for the first release.</li>
+            <li>Customer doesn’t have any problems with cloud costs.</li>
+            <li>There is a development team vs single developer.</li>
+        </ul>
+        <img alt="" src="/images/ma3.gif">
+        <p>Monolithic architecture is more appropriate when:</p>
+        <ul>
+            <li>Application logic is relatively simple, and it is never going to have so much load.</li>
+            <li>Customer doesn't want to hire a development team. He wants to pay to a single developer and wants lower costs for cloud services as it's possible.</li>
+            <li>It’s a temporary application for a specific event.</li>
+        </ul>
+        <img alt="" src="/images/ma4.gif">
+        <p>Unfortunately in real life everything is slightly different and client requirements meet the conditions above very rarely. Here comes to help monolithic architecture with the intent of microservices. The main idea behind it is to start with a monolithic application and split it to microservices whenever it will be necessary. The only difference from a regular monolithic app is the intent of transforming it to microservices in the future. With that intent you are going to design a database differently, simulate messaging flow without having any messaging service integrated, prepare reusable codes for libraries etc. Ultimately you will have a monolithic app which easily can be transformed to microservices.</p>
+        <p>So now for most startups and MVPs I prefer to go with monolithic architecture with the intent of microservices. I don’t think it’s the best decision but that method worked for me so far.</p>
+    </div>
+</div>
+
+</body>
+</html>

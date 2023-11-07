@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://meruzh.com/articles/cloud-services-vs-fake-startup-ideas</loc>
-    <lastmod>2021-03-21T00:00:00.000Z</lastmod>
+    <lastmod>2021-03-12T00:00:00.000Z</lastmod>
   </url>
   <url>
     <loc>https://meruzh.com/articles/cursor-in-mongo-db</loc>
@@ -43,6 +43,10 @@
   <url>
     <loc>https://meruzh.com/articles/login-with-social-account-arm</loc>
     <lastmod>2020-08-16T00:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://meruzh.com/articles/monolithic-apps-with-the-intent-of-microservices</loc>
+    <lastmod>2021-03-22T00:00:00.000Z</lastmod>
   </url>
   <url>
     <loc>https://meruzh.com/articles/powerful-aggregation-framework-of-mongodb</loc>

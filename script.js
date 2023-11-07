@@ -61,20 +61,28 @@ var menuItems = [
     background: 'linear-gradient(176deg, rgb(254 255 254) 42%, #8BC34A 100%)'
   },
   {
-    title: 'Management of environment files using CircleCI contexts',
-    description: 'In this article I have described a mechanism which allows to facilitate management of .env files by using CircleCI contexts and a little bit scripting.',
-    image: '/images/ci-1.png',
-    link: '/articles/circle-ci-contexts',
-    dateString: 'Feb 13, 2021',
-    background: 'linear-gradient(71deg, rgb(254 255 254) 42%, rgb(0 5 201) 100%);'
+    title: 'Monolithic Apps With The Intent Of Microservices',
+    description: 'Microservices are great but they can complicate your work when you\'re not sure what your app will become eventually. Sometimes having monolithic app is better choice.',
+    image: '/images/ma1.jpeg',
+    link: '/articles/monolithic-apps-with-the-intent-of-microservices',
+    dateString: 'March 22, 2021',
+    background: 'linear-gradient(147deg, rgb(254 255 254) 42%, #0aa89d 100%);'
   },
   {
     title: 'Cloud Services VS Fake Startup Ideas',
     description: 'An article about how to use free tiers of cloud services to release MVPs of your startup ideas.',
     image: '/images/cloud-1.png',
     link: '/articles/cloud-services-vs-fake-startup-ideas',
-    dateString: 'March 21, 2021',
+    dateString: 'March 12, 2021',
     background: 'linear-gradient(185deg, rgb(254 255 254) 42%, #eeef03 100%);'
+  },
+  {
+    title: 'Management of environment files using CircleCI contexts',
+    description: 'In this article I have described a mechanism which allows to facilitate management of .env files by using CircleCI contexts and a little bit scripting.',
+    image: '/images/ci-1.png',
+    link: '/articles/circle-ci-contexts',
+    dateString: 'Feb 13, 2021',
+    background: 'linear-gradient(71deg, rgb(254 255 254) 42%, rgb(0 5 201) 100%);'
   },
   {
     title: 'Six tips to speed up Node.js Apps development',
