@@ -9,6 +9,7 @@ var menuItems = [
     description: 'Այս հոդվածում անդրադարձել եմ պատճառաբանությունների, որոնց հանդիպել եմ, որոնք հենց իմ մոտ են ի հայտ եկել, կամ որոնցով ուրիշներն են արդարացել կապված վատ կոդ գրելու հետ։',
     image: '/images/g-arm.jpg',
     link: '/articles/guilty-programmer-arm',
+    englishLink: '/articles/guilty-programmer',
     dateString: 'Հունվար 21, 2023թ.',
     background: 'linear-gradient(246deg, rgb(224 245 151) 42%, rgb(255 255 255) 100%);'
   },
@@ -17,6 +18,7 @@ var menuItems = [
     description: 'This article delves into the various reasons why experienced programmers may struggle to consistently write clean code, including factors like team dynamics, legacy code, motivation, and code review practices.',
     image: '/images/gp-1.webp',
     link: '/articles/guilty-programmer',
+    armenianLink: '/articles/guilty-programmer-arm',
     dateString: 'Jan 21, 2023',
     background: 'linear-gradient(230deg, rgb(96 177 255) 42%, rgb(255 255 255) 100%)'
   },
@@ -25,6 +27,7 @@ var menuItems = [
     description: 'The article explores the intriguing parallels between a software developer\'s role and that of a warrior. As two characters discuss their predicament in the world of programming, they touch upon the developer\'s unwavering principles, time management strategies, and the creation of utility programs.',
     image: '/images/wc-1.webp',
     link: '/articles/warriors-code',
+    armenianLink: '/articles/warriors-code-arm',
     dateString: 'June 17, 2022',
     background: 'linear-gradient(96deg, rgb(255 255 255) 42%, rgb(255 0 0) 100%)'
   },
@@ -33,6 +36,7 @@ var menuItems = [
     description: 'Վճարիր գործիքներիդ համար, Բարձր արտադրողականության ժամանակահատված, Ստեղծիր օգնականներ, Միշտ ունեցիր անելիք։',
     image: '/images/wca-1.webp',
     link: '/articles/warriors-code-arm',
+    englishLink: '/articles/warriors-code',
     dateString: 'Հունիս 17, 2022թ.',
     background: 'linear-gradient(271deg, rgb(255 255 255) 42%, rgb(184 23 17) 100%);'
   },
@@ -41,6 +45,7 @@ var menuItems = [
     description: 'The article describes a method by which the IP address of the server can be changed based on the need.',
     image: '/images/here.jpeg',
     link: '/articles/ip-rotation',
+    armenianLink: '/articles/ip-rotation-arm',
     dateString: 'April 11, 2022թ.',
     background: 'linear-gradient(292deg, rgb(240 241 244) 42%, rgb(37 148 146) 100%)'
   },
@@ -49,6 +54,7 @@ var menuItems = [
     description: 'Հոդվածում նկարագրվում է մի մեթոդ, որով կարելի է փոփոխել server-ի IP հասցեն անհրաժեշտությունից ելնելով։',
     image: '/images/iph.png',
     link: '/articles/ip-rotation-arm',
+    englishLink: '/articles/ip-rotation',
     dateString: 'Ապրիլ 11, 2022թ.',
     background: 'linear-gradient(356deg, rgb(224 224 224) 42%, rgb(255 255 255) 100%);'
   },
@@ -113,6 +119,7 @@ var menuItems = [
     description: 'Often in various websites and applications we see social login feature. Let\'s try to understand,if there is an information risk arising from that and ways of protecting our personal information.',
     image: '/images/cb-1.jpeg',
     link: '/articles/cybersecurity-login-with-social-accounts',
+    armenianLink: '/articles/login-with-social-account-arm',
     dateString: 'August 16, 2020',
     background: 'linear-gradient(258deg, rgb(217 202 127) 42%, rgb(255 247 208) 100%);'
   },
@@ -121,6 +128,7 @@ var menuItems = [
     description: 'Հաճախ տարբեր կայքերում և հավելվածներում կարելի է հանդիպել «Մուտք այլ կայքի միջոցով» կոճակների։ Փորձենք հասկանալ ինչի համար են նախատեսված այդ կոճակները, դրանց օգտակարությունը, դրանցից բխող տեղեկատվական վտանգները և այդ վտանգներից պաշտպանվելու եղանակները։',
     image: '/images/cba-1.jpg',
     link: '/articles/login-with-social-account-arm',
+    englishLink: '/articles/cybersecurity-login-with-social-accounts',
     dateString: 'Օգոստոսի 16, 2020թ.',
     background: 'linear-gradient(202deg, rgb(232 172 162) 42%, rgb(147 205 255) 100%)'
   },
@@ -167,8 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ${document.body.innerHTML}`;
 
+  addLinkForOtherLanguage();
   addAuthorInfo();
-
   document.querySelector('#menu-button').addEventListener('click', () => {
     if (menuOpen && !window.alwaysOpen) {
       closeMenu();
@@ -237,6 +245,28 @@ function addAuthorInfo() {
   const hasLinkedinLink = document.querySelector('div.linkedin > iframe');
   const wrapperElement = document.querySelector('#container > .wrapper');
   wrapperElement.innerHTML = `${authorInfoDiv}${wrapperElement.innerHTML}${hasLinkedinLink ? '' : authorInfoDiv}`
+}
+
+function getArticlePath(path) {
+  return path?.substring(path?.lastIndexOf('/') + 1) ?? '';
+}
+
+
+function addLinkForOtherLanguage() {
+  const menuItem = menuItems.find((i) => getArticlePath(location.pathname) === getArticlePath(i.link));
+  if (!menuItem || (!menuItem.englishLink && !menuItem.armenianLink)) {
+    return;
+  }
+  const wrapperElement = document.querySelector('#container > .wrapper');
+
+  const armenianItem = menuItems.find((i) => getArticlePath(menuItem.armenianLink) === getArticlePath(i.link) );
+  const englishItem = menuItems.find((i) => getArticlePath(menuItem.englishLink) === getArticlePath(i.link) );
+  if (englishItem) {
+    wrapperElement.innerHTML = `<div style="background: ${englishItem.background}" class="other-link"><img src="${englishItem.image}"><a href="${englishItem.link}">Read in English</a></div>${wrapperElement.innerHTML}`
+  }
+  if (armenianItem) {
+    wrapperElement.innerHTML = `<div style="background: ${armenianItem.background}" class="other-link"><img src="${armenianItem.image}"><a href="${armenianItem.link}">Կարդալ Հայերեն</a></div>${wrapperElement.innerHTML}`
+  }
 }
 
 function formatArmDate(date) {

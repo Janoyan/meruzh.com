@@ -427,3 +427,32 @@ div.divider {
 .hljs-ln-code {
     padding-left: 10px!important;
 }
+
+
+.other-link {
+    display: inline-block;
+    background-color: #fffecb;
+    border-radius: 10px;
+    border: 1px solid;
+    height: 80px;
+    overflow: hidden;
+}
+
+.other-link img {
+    width: 110px !important;
+    height: 80px !important;
+    object-fit: cover;
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.other-link a {
+    display: inline-block;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #414040;
+    font-size: 110%;
+    font-weight: 700;
+    text-transform: uppercase;
+}
