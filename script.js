@@ -5,6 +5,24 @@ window.alwaysOpen = false;
 
 var menuItems = [
   {
+    title: 'ՏՏ Դատաստան',
+    description: 'Ի հարգանքս բոլոր նրանց, ովքեր սիրով են կատարում իրենց գործը։',
+    image: '/images/itameta.png',
+    link: '/essay/it-heaven-arm',
+    englishLink: '/essay/it-heaven',
+    dateString: 'Նոյեմբեր 17, 2023թ.',
+    background: 'linear-gradient(154deg, rgb(253 12 5) 42%, rgb(255 255 255) 100%)'
+  },
+  {
+    title: 'IT HEAVEN',
+    description: 'Respect to all of them who do their job with love.',
+    image: '/images/itmeta.webp',
+    link: '/essay/it-heaven',
+    armenianLink: '/essay/it-heaven-arm',
+    dateString: 'Nov 17, 2023',
+    background: 'linear-gradient(230deg, rgb(237 248 255) 42%, rgb(255 255 255) 100%);'
+  },
+  {
     title: 'Մեղսավոր ծրագրավորող',
     description: 'Այս հոդվածում անդրադարձել եմ պատճառաբանությունների, որոնց հանդիպել եմ, որոնք հենց իմ մոտ են ի հայտ եկել, կամ որոնցով ուրիշներն են արդարացել կապված վատ կոդ գրելու հետ։',
     image: '/images/g-arm.jpg',

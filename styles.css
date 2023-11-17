@@ -325,6 +325,10 @@ span.code {
     background: #eaffd6;
 }
 
+#author-info-container p {
+    font-family: 'Roboto', sans-serif !important;
+}
+
 #author-info-container a  {
     text-decoration: none;
     color: #393939;
