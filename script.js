@@ -254,10 +254,10 @@ function addAuthorInfo() {
 
   const authorInfoDiv = lang === 'hy' ? `
     <div id="author-info-container">
-      <p>Հեղինակ՝ <a target="_blank" href="https://linkedin.com/in/meruzh"><img src="/images/linkedin.png">Մերուժ Ջանոյան</a>, հրապարակվել է ${yearDiff > 0 ? diffTextArm : `${formattedDate}`}</p>
+      <p>Հեղինակ՝ <a target="_blank" href="mailto:meruzh2008@gmail.com"><img src="/images/linkedin.png">Մերուժ Ջանոյան</a>, հրապարակվել է ${yearDiff > 0 ? diffTextArm : `${formattedDate}`}</p>
     </div>` :
     `<div id="author-info-container">
-    <p>Written by <a target="_blank" href="https://linkedin.com/in/meruzh"><img src="/images/linkedin.png">Meruzh Janoyan</a> ${yearDiff > 0 ? diffText : `on ${formattedDate}`}</p>
+    <p>Written by <a target="_blank" href="mailto:meruzh2008@gmail.com"><img src="/images/linkedin.png">Meruzh Janoyan</a> ${yearDiff > 0 ? diffText : `on ${formattedDate}`}</p>
   </div>`;
 
   const hasLinkedinLink = document.querySelector('div.linkedin > iframe');
