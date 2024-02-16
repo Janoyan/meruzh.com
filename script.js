@@ -11,7 +11,8 @@ var menuItems = [
     link: '/essay/it-heaven-arm',
     englishLink: '/essay/it-heaven',
     dateString: 'Նոյեմբեր 17, 2023թ.',
-    background: 'linear-gradient(154deg, rgb(253 12 5) 42%, rgb(255 255 255) 100%)'
+    background: 'linear-gradient(154deg, rgb(253 12 5) 42%, rgb(255 255 255) 100%)',
+    hide: true,
   },
   {
     title: 'IT HEAVEN',
@@ -29,7 +30,8 @@ var menuItems = [
     link: '/articles/guilty-programmer-arm',
     englishLink: '/articles/guilty-programmer',
     dateString: 'Հունվար 21, 2023թ.',
-    background: 'linear-gradient(246deg, rgb(224 245 151) 42%, rgb(255 255 255) 100%);'
+    background: 'linear-gradient(246deg, rgb(224 245 151) 42%, rgb(255 255 255) 100%);',
+    hide: true,
   },
   {
     title: 'GUILTY programmer',
@@ -56,7 +58,8 @@ var menuItems = [
     link: '/articles/warriors-code-arm',
     englishLink: '/articles/warriors-code',
     dateString: 'Հունիս 17, 2022թ.',
-    background: 'linear-gradient(271deg, rgb(255 255 255) 42%, rgb(184 23 17) 100%);'
+    background: 'linear-gradient(271deg, rgb(255 255 255) 42%, rgb(184 23 17) 100%);',
+    hide: true,
   },
   {
     title: 'IP Rotation with NodeJS and Heroku',
@@ -74,7 +77,8 @@ var menuItems = [
     link: '/articles/ip-rotation-arm',
     englishLink: '/articles/ip-rotation',
     dateString: 'Ապրիլ 11, 2022թ.',
-    background: 'linear-gradient(356deg, rgb(224 224 224) 42%, rgb(255 255 255) 100%);'
+    background: 'linear-gradient(356deg, rgb(224 224 224) 42%, rgb(255 255 255) 100%);',
+    hide: true,
   },
   {
     title: 'Testing Asynchronous Events Using Manual Promise',
@@ -148,7 +152,8 @@ var menuItems = [
     link: '/articles/login-with-social-account-arm',
     englishLink: '/articles/cybersecurity-login-with-social-accounts',
     dateString: 'Օգոստոսի 16, 2020թ.',
-    background: 'linear-gradient(202deg, rgb(232 172 162) 42%, rgb(147 205 255) 100%)'
+    background: 'linear-gradient(202deg, rgb(232 172 162) 42%, rgb(147 205 255) 100%)',
+    hide: true,
   },
   {
     title: 'Adventures of Promise in Bluebird world',
@@ -179,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 
   <div id="menu-container">
-  ${menuItems.map((item) => `
+  ${menuItems.map((item) => item.hide ? '' : `
       <div class="menu-item" onclick="navigateTo('${item.link}')" style="background: ${item.background}">
         <img src="${item.image}">
         <div>
