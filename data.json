@@ -1,0 +1,174 @@
+{
+  "careerStartDate": "2016-06-05",
+  "publications": [
+    {
+      "title": "ՏՏ Դատաստան",
+      "type": "article",
+      "description": "Ի հարգանքս բոլոր նրանց, ովքեր սիրով են կատարում իրենց գործը։",
+      "image": "/images/itameta.png",
+      "link": "/essay/it-heaven-arm",
+      "englishLink": "/essay/it-heaven",
+      "dateString": "2023-11-17",
+      "hide": true
+    },
+    {
+      "title": "IT HEAVEN",
+      "type": "article",
+      "description": "Respect to all of them who do their job with love.",
+      "image": "/images/itmeta.webp",
+      "link": "/essay/it-heaven",
+      "armenianLink": "/essay/it-heaven-arm",
+      "dateString": "2023-11-17"
+    },
+    {
+      "title": "Մեղսավոր ծրագրավորող",
+      "type": "article",
+      "description": "Այս հոդվածում անդրադարձել եմ պատճառաբանությունների, որոնց հանդիպել եմ, որոնք հենց իմ մոտ են ի հայտ եկել, կամ որոնցով ուրիշներն են արդարացել կապված վատ կոդ գրելու հետ։",
+      "image": "/images/g-arm.jpg",
+      "link": "/articles/guilty-programmer-arm",
+      "englishLink": "/articles/guilty-programmer",
+      "dateString": "2023-01-21",
+      "hide": true
+    },
+    {
+      "title": "GUILTY programmer",
+      "type": "article",
+      "description": "This article delves into the various reasons why experienced programmers may struggle to consistently write clean code, including factors like team dynamics, legacy code, motivation, and code review practices.",
+      "image": "/images/gp-1.webp",
+      "link": "/articles/guilty-programmer",
+      "armenianLink": "/articles/guilty-programmer-arm",
+      "dateString": "2023-01-21"
+    },
+    {
+      "title": "WARRIOR’S CODE",
+      "type": "article",
+      "description": "The article explores the intriguing parallels between a software developer's role and that of a warrior. As two characters discuss their predicament in the world of programming, they touch upon the developer's unwavering principles, time management strategies, and the creation of utility programs.",
+      "image": "/images/wc-1.webp",
+      "link": "/articles/warriors-code",
+      "armenianLink": "/articles/warriors-code-arm",
+      "dateString": "2022-06-17"
+    },
+    {
+      "title": "ՄԱՐՏԻԿԻ ԿԱՆՈՆՆԵՐԸ",
+      "type": "article",
+      "description": "Վճարիր գործիքներիդ համար, Բարձր արտադրողականության ժամանակահատված, Ստեղծիր օգնականներ, Միշտ ունեցիր անելիք։",
+      "image": "/images/wca-1.webp",
+      "link": "/articles/warriors-code-arm",
+      "englishLink": "/articles/warriors-code",
+      "dateString": "2022-06-17",
+      "hide": true
+    },
+    {
+      "title": "IP Rotation with NodeJS and Heroku",
+      "type": "article",
+      "description": "The article describes a method by which the IP address of the server can be changed based on the need.",
+      "image": "/images/here.jpeg",
+      "link": "/articles/ip-rotation",
+      "armenianLink": "/articles/ip-rotation-arm",
+      "dateString": "2022-04-11"
+    },
+    {
+      "title": "Heroku: Մեկ NodeJS ծրագրի բազմաթիվ IP հասցեներ",
+      "type": "article",
+      "description": "Հոդվածում նկարագրվում է մի մեթոդ, որով կարելի է փոփոխել server-ի IP հասցեն անհրաժեշտությունից ելնելով։",
+      "image": "/images/iph.png",
+      "link": "/articles/ip-rotation-arm",
+      "englishLink": "/articles/ip-rotation",
+      "dateString": "2022-04-11",
+      "hide": true
+    },
+    {
+      "title": "Testing Asynchronous Events Using Manual Promise",
+      "type": "article",
+      "description": "In the article is described one of the ways I used for testing asynchronous logic of applications.",
+      "image": "/images/as1.jpeg",
+      "link": "/articles/testing-asynchronous-events-using-manual-promise",
+      "dateString": "2021-12-15"
+    },
+    {
+      "title": "Powerful Aggregation Framework of MongoDB",
+      "type": "article",
+      "description": "As it’s known, MongoDB is a document-oriented database with lots of powerful features and advantages. One of those powerful features is the aggregation framework of MongoDB.",
+      "image": "/images/ap-h.png",
+      "link": "/articles/powerful-aggregation-framework-of-mongodb",
+      "dateString": "2021-07-30"
+    },
+    {
+      "title": "Programming Prolongs Life",
+      "type": "article",
+      "description": "In this short article I shared my thoughts about creativity and how it's related to programming.",
+      "image": "/images/pp1.jpeg",
+      "link": "/articles/programming-prolongs-life",
+      "dateString": "2021-07-10"
+    },
+    {
+      "title": "Monolithic Apps With The Intent Of Microservices",
+      "type": "article",
+      "description": "Microservices are great but they can complicate your work when you're not sure what your app will become eventually. Sometimes having monolithic app is better choice.",
+      "image": "/images/ma1.jpeg",
+      "link": "/articles/monolithic-apps-with-the-intent-of-microservices",
+      "dateString": "2021-03-22"
+    },
+    {
+      "title": "Cloud Services VS Fake Startup Ideas",
+      "type": "article",
+      "description": "An article about how to use free tiers of cloud services to release MVPs of your startup ideas.",
+      "image": "/images/cloud-1.png",
+      "link": "/articles/cloud-services-vs-fake-startup-ideas",
+      "dateString": "2021-03-12"
+    },
+    {
+      "title": "Management of environment files using CircleCI contexts",
+      "type": "article",
+      "description": "In this article I have described a mechanism which allows to facilitate management of .env files by using CircleCI contexts and a little bit scripting.",
+      "image": "/images/ci-1.png",
+      "link": "/articles/circle-ci-contexts",
+      "dateString": "2021-02-13"
+    },
+    {
+      "title": "Six tips to speed up Node.js Apps development",
+      "type": "article",
+      "description": "This article highlights the six most important tips I have learned by analyzing my previous projects from the last few years. In it, I have compiled a list of recommendations to help in facilitating the development process of node.js apps. There aren't only six tips, of course, I've only listed the six most important ones according to my experience.",
+      "image": "/images/node-js.jpg",
+      "link": "/articles/6-tips-to-speed-up-node-js-apps-develop",
+      "dateString": "2020-12-16"
+    },
+    {
+      "title": "[cybersecurity] Login with social account",
+      "type": "article",
+      "description": "Often in various websites and applications we see social login feature. Let's try to understand,if there is an information risk arising from that and ways of protecting our personal information.",
+      "image": "/images/cb-1.jpeg",
+      "link": "/articles/cybersecurity-login-with-social-accounts",
+      "armenianLink": "/articles/login-with-social-account-arm",
+      "dateString": "2020-08-16"
+    },
+    {
+      "title": "ՄՈՒՏՔ ԱՅԼ ԿԱՅՔԻ ՄԻՋՈՑՈՎ",
+      "type": "article",
+      "description": "Հաճախ տարբեր կայքերում և հավելվածներում կարելի է հանդիպել «Մուտք այլ կայքի միջոցով» կոճակների։ Փորձենք հասկանալ ինչի համար են նախատեսված այդ կոճակները, դրանց օգտակարությունը, դրանցից բխող տեղեկատվական վտանգները և այդ վտանգներից պաշտպանվելու եղանակները։",
+      "image": "/images/cba-1.jpg",
+      "link": "/articles/login-with-social-account-arm",
+      "englishLink": "/articles/cybersecurity-login-with-social-accounts",
+      "dateString": "2020-08-16",
+      "hide": true
+    },
+    {
+      "title": "Adventures of Promise in Bluebird world",
+      "type": "article",
+      "description": "Once upon a time a boy named Promise decided to go travel in one of the famous worlds in his reality. Article is about several useful methods of bluebird npm package.",
+      "image": "/images/bluebird.png",
+      "link": "/articles/adventures-of-promise-in-bluebird-world",
+      "dateString": "2020-04-09"
+    },
+    {
+      "title": "Cursor in MongoDB",
+      "type": "article",
+      "description": "In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor.",
+      "image": "/images/cursor-in-mongodb.png",
+      "link": "/articles/cursor-in-mongo-db",
+      "dateString": "2019-09-28"
+    }
+  ],
+  "projects": [],
+  "companies": []
+}
