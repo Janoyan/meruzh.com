@@ -1,5 +1,12 @@
 {
   "careerStartDate": "2016-06-05",
+  "currentLocation": "Yerevan, Armenia",
+  "phone": "(+374) 91240455",
+  "email": "meruzh2008@gmail.com",
+  "website": "meruzh.com",
+  "gender": "Male",
+  "nationality": "Armenian",
+  "dob": "March 23, 1992",
   "publications": [
     {
       "title": "ՏՏ Դատաստան",
@@ -14,7 +21,7 @@
     {
       "title": "IT HEAVEN",
       "type": "article",
-      "description": "Respect to all of them who do their job with love.",
+      "description": "“IT Heaven” imagines the afterlife for IT workers: Hell mirrors toxic workplaces, Heaven offers freedom and fulfillment. Through interviews, it critiques the ethical impact of tech, showing that true guidance comes from conscience, not rules.",
       "image": "/images/itmeta.webp",
       "link": "/essay/it-heaven",
       "armenianLink": "/essay/it-heaven-arm",
@@ -33,7 +40,7 @@
     {
       "title": "GUILTY programmer",
       "type": "article",
-      "description": "This article delves into the various reasons why experienced programmers may struggle to consistently write clean code, including factors like team dynamics, legacy code, motivation, and code review practices.",
+      "description": "“Guilty Programmer” explains why experienced developers often fail to write clean code. Reasons include lack of confidence in a new team, fear of breaking legacy code, tight deadlines, frequent requirement changes, and avoiding conflicts in reviews. Overconfidence or low motivation can also lead to poor-quality code. Ultimately, clean coding depends not just on skill, but on environment, discipline, and team culture.",
       "image": "/images/gp-1.webp",
       "link": "/articles/guilty-programmer",
       "armenianLink": "/articles/guilty-programmer-arm",
@@ -42,7 +49,7 @@
     {
       "title": "WARRIOR’S CODE",
       "type": "article",
-      "description": "The article explores the intriguing parallels between a software developer's role and that of a warrior. As two characters discuss their predicament in the world of programming, they touch upon the developer's unwavering principles, time management strategies, and the creation of utility programs.",
+      "description": "“Warrior’s Code” portrays a developer as a disciplined warrior navigating the challenges of programming. Through the metaphorical journey across heap, stack, event loop, and error handler, the story highlights his rules: paying for tools, managing time via high- and medium-productivity periods, automating repetitive tasks with helper scripts, and staying engaged to avoid boredom. It emphasizes professionalism, foresight, and thoughtful work habits as keys to success in development.",
       "image": "/images/wc-1.webp",
       "link": "/articles/warriors-code",
       "armenianLink": "/articles/warriors-code-arm",
@@ -61,7 +68,7 @@
     {
       "title": "IP Rotation with NodeJS and Heroku",
       "type": "article",
-      "description": "The article describes a method by which the IP address of the server can be changed based on the need.",
+      "description": "The article explains how to perform IP rotation for data scraping using NodeJS and Heroku. A script makes HTTP requests to a list of URLs and handles rate-limit errors by restarting the Heroku dyno, which automatically changes its IP address. It details the setup of the NodeJS script, use of the Heroku API for dyno restarts, configuration of environment variables, and deployment steps to ensure continuous operation despite IP blocks.",
       "image": "/images/here.jpeg",
       "link": "/articles/ip-rotation",
       "armenianLink": "/articles/ip-rotation-arm",
@@ -80,7 +87,7 @@
     {
       "title": "Testing Asynchronous Events Using Manual Promise",
       "type": "article",
-      "description": "In the article is described one of the ways I used for testing asynchronous logic of applications.",
+      "description": "The article describes testing asynchronous events in a NodeJS. To handle a certain event, a custom ManualPromise class was created, allowing tests to await and control the event’s resolution. This approach enabled integration tests with Mocha to reliably pass or fail based on the event outcome.",
       "image": "/images/as1.jpeg",
       "link": "/articles/testing-asynchronous-events-using-manual-promise",
       "dateString": "2021-12-15"
@@ -88,7 +95,7 @@
     {
       "title": "Powerful Aggregation Framework of MongoDB",
       "type": "article",
-      "description": "As it’s known, MongoDB is a document-oriented database with lots of powerful features and advantages. One of those powerful features is the aggregation framework of MongoDB.",
+      "description": "The article explains the powerful aggregation framework of MongoDB, which processes and transforms data through a sequence of pipeline stages. It covers key stages like $lookup for joins, $unwind and $group for categorization, $bucketAuto for automatic grouping, $facet for multiple pipelines, $geoNear for location queries, $graphLookup for recursive searches, and $out for storing results. Each stage is illustrated with examples, showing how to manipulate and analyze data efficiently within MongoDB.",
       "image": "/images/ap-h.png",
       "link": "/articles/powerful-aggregation-framework-of-mongodb",
       "dateString": "2021-07-30"
@@ -163,12 +170,377 @@
     {
       "title": "Cursor in MongoDB",
       "type": "article",
-      "description": "In this short article, I would like to tell some basics about the working mechanism of the MongoDB cursor.",
+      "description": "The article explains the basics of MongoDB cursors, which represent a set of documents matching a query.",
       "image": "/images/cursor-in-mongodb.png",
       "link": "/articles/cursor-in-mongo-db",
       "dateString": "2019-09-28"
     }
   ],
-  "projects": [],
-  "companies": []
+  "companies": [
+    {
+      "title": "Junior Software Engineer",
+      "startDate": "2016-06-05",
+      "endDate": "2016-12-01",
+      "companyName": "Instigate Mobile CJSC",
+      "details": [
+        {
+          "label": "Work Model",
+          "value": "On-Site"
+        },
+        {
+          "label": "Main Stack",
+          "value": "Swift, JavaScript, NodeJS, HTML, CSS"
+        },
+        {
+          "label": "Reason of leaving",
+          "value": "Compensation was below market and did not meet living expenses."
+        }
+      ],
+      "description": "I started at this company as an Intern and was later promoted to Junior Developer. Initially, I worked on implementing an iOS mobile application before transitioning to back-end development with Node.js.\n\nDuring this period, I gained many foundational skills, for which I am grateful to the company."
+    },
+    {
+      "title": "Software Engineer",
+      "startDate": "2016-12-01",
+      "endDate": "2017-04-01",
+      "companyName": "Develandoo",
+      "details": [
+        {
+          "label": "Work Model",
+          "value": "On-Site"
+        },
+        {
+          "label": "Side",
+          "value": "Back-end, Front-End"
+        },
+        {
+          "label": "Main Stack",
+          "value": "JavaScript, TypeScript, NodeJS, Angular2, HTML, CSS"
+        },
+        {
+          "label": "Reason of leaving",
+          "value": "Stressful environment & my own naive startup ideas."
+        }
+      ],
+      "description": "In this company, I worked as a Full-Stack Developer, developing an advertising application. During this period, I gained initial experience with Angular 2 and extensively worked with Facebook Developer APIs to integrate them with the Node.js back-end."
+    },
+    {
+      "title": "Software Engineer",
+      "startDate": "2017-04-01",
+      "endDate": "2017-12-01",
+      "companyName": "WebTechSystems",
+      "details": [
+        {
+          "label": "Work Model",
+          "value": "On-Site"
+        },
+        {
+          "label": "Side",
+          "value": "Front-End"
+        },
+        {
+          "label": "Main Stack",
+          "value": "JavaScript, TypeScript, AngularJS, Angular2, HTML, CSS, SCSS"
+        },
+        {
+          "label": "Reason of leaving",
+          "value": "Stressful environment"
+        }
+      ],
+      "description": "In this company, I worked as a Front-End Developer on several projects, gaining practical experience with Angular 2."
+    },
+    {
+      "title": "Software Engineer",
+      "startDate": "2017-12-01",
+      "endDate": "2018-04-01",
+      "companyName": "Freelance",
+      "details": [
+        {
+          "label": "Work Model",
+          "value": "Remote"
+        },
+        {
+          "label": "Side",
+          "value": "Back-end, Front-End"
+        }
+      ],
+      "description": "During this period, I worked with various clients globally through platforms such as Upwork and Freelancer. Most of the projects were small in scope and provided limited earnings, which is why this phase was relatively short."
+    },
+    {
+      "title": "Software Engineer",
+      "startDate": "2018-04-01",
+      "endDate": "2020-07-29",
+      "companyName": "Priotix",
+      "details": [
+        {
+          "label": "Work Model",
+          "value": "On-site"
+        },
+        {
+          "label": "Side",
+          "value": "Back-end"
+        },
+        {
+          "label": "Main Stack",
+          "value": "JavaScript, NodeJS, Express, MongoDB, Apache Kafka"
+        },
+        {
+          "label": "Other Skills",
+          "value": "Trello, Jira, GIT, Scrum"
+        },
+        {
+          "label": "Reason of leaving",
+          "value": "Over-architectured system and low salary."
+        }
+      ],
+      "description": "In this company, I worked on a large Esports-related project and was one of the first developers on the team. The project was a portal for Esports gaming results and statistics, where we fetched and processed data from external APIs for popular games such as Dota 2, CS:GO, and League of Legends.\n\nThis was my first experience with microservices architecture, where I gained extensive related skills. By the time I left, the application consisted of more than fifty services communicating with each other via the Apache Kafka messaging system.\n\nThe project involved numerous challenges, including data scraping, rate limiting, data synchronization, and other complex processes, which we worked actively to resolve."
+    },
+    {
+      "title": "Senior Software Engineer",
+      "startDate": "2020-07-29",
+      "endDate": "2021-09-01",
+      "companyName": "Simply Technologies",
+      "details": [
+        {
+          "label": "Work Model",
+          "value": "Hybrid"
+        },
+        {
+          "label": "Side",
+          "value": "Back-end"
+        },
+        {
+          "label": "Main Stack",
+          "value": "JavaScript, TypeScript, NodeJS, Express, Nats, Redis, MongoDB, Micro-services"
+        },
+        {
+          "label": "Other Skills",
+          "value": "Trello, Jira, GIT, Scrum"
+        },
+        {
+          "label": "Reason of leaving",
+          "value": "Didn't want to change my technology stack by switching to Ruby."
+        }
+      ],
+      "description": "I worked on three projects in this company, two of which were successfully completed, while the third was a legacy project that I decided not to continue with.\n\nThe first project was a banking application that allowed users to manage personal bank accounts through various communication channels such as voice calls, SMS, and chatbots. I integrated the back-end with an external API that enabled account operations, and although the application was relatively small, it was implemented using a microservices architecture.\n\nThe second project was an auction web application for buying and selling gold bars. I worked independently on the back-end and implemented a monolithic architecture designed to be easily converted into microservices if needed.\n\nThe third project was a document processing system that used OCR to parse and annotate scanned documents. As it was a legacy application written in Ruby, it required me to change my technology stack, which I decided not to pursue."
+    },
+    {
+      "title": "Senior Software Engineer & Technical Lead",
+      "startDate": "2021-09-01",
+      "endDate": "2024-10-01",
+      "companyName": "Sprinting Software",
+      "details": [
+        {
+          "label": "Work Model",
+          "value": "Remote"
+        },
+        {
+          "label": "Side",
+          "value": "mainly Back-end"
+        },
+        {
+          "label": "Main Stack",
+          "value": "TypeScript, NodeJS, NestJS, ReactJS, Micro-services, PostgreSQL, Azure Service Bus"
+        },
+        {
+          "label": "Other Skills",
+          "value": "Azure DevOps, Azure Repos, Azure Cognitive Search, Azure Monitor Logs, Scrum"
+        },
+        {
+          "label": "Reason of leaving",
+          "value": "The parent company decided to replace its contractor, Sprinting Software, with another provider."
+        }
+      ],
+      "description": "I was employed as a Full-Stack Senior Developer, but after a few months I focused primarily on the back-end side. During the last six months, I worked as the Technical Lead of the development team.\n\nWe developed a web application for recruiters designed to simplify the collection and processing of candidate documents. The application went live and was used globally by major companies such as Amazon, BMW, Carrefour, and many others as part of their onboarding processes.\n\nFrom a technological perspective, I gained extensive real-world microservices experience and collaborated with multiple international teams to integrate and communicate with various external services."
+    },
+    {
+      "title": "Senior Software Engineer and Technical Lead of the Back-End Team",
+      "startDate": "2023-02-01",
+      "endDate": null,
+      "companyName": "Priotix",
+      "details": [
+        {
+          "label": "Work Model",
+          "value": "Remote"
+        },
+        {
+          "label": "Side",
+          "value": "Back-end"
+        },
+        {
+          "label": "Main Stack",
+          "value": "TypeScript, NodeJS, NestJS, NX, Micro-services, PostgreSQL"
+        },
+        {
+          "label": "Other Skills",
+          "value": "GIT, Jira, Figma, Scrum"
+        }
+      ],
+      "description": "As a Technical Lead, I am responsible for all decisions related to back-end technologies and infrastructure. I also collaborate with the Product Owner on the design of the relational database model.\n\nAs a Senior Software Engineer, I contribute through coding and code reviews, ensuring high-quality deliverables while staying up to date with the latest technologies, frameworks, and libraries.\n\nDespite the project’s large and multifunctional scope, I ensure that automation tests are written for each new endpoint."
+    }
+  ],
+  "educationAndTrainings": [
+    {
+      "title": "Bachelor’s Degree in Information Security",
+      "startDate": "2009-09-01",
+      "endDate": "2013-06-01",
+      "companyName": "State Engineering University of Armenia",
+      "details": [
+        {
+          "label": "Teaching Mode",
+          "value": "Offline"
+        },
+        {
+          "label": "Skills Learned",
+          "value": "C, C++, C#, Algorithms, Data Structures, Operation systems, Bash, Cryptography, Databases"
+        }
+      ],
+      "description": "My bachelor’s program was primarily focused on programming, cryptography, steganography, cybersecurity, and networking. During these four years, I gained experience in solving coding problems, applied cryptography, working with UNIX-based operating systems, basic networking, computing system architecture, and many other related subjects."
+    },
+    {
+      "title": "Programming technologies and languages",
+      "startDate": "2015-10-01",
+      "endDate": "2016-06-05",
+      "companyName": "Instigate Training Center",
+      "details": [
+        {
+          "label": "Teaching Mode",
+          "value": "Offline"
+        },
+        {
+          "label": "Skills Learned",
+          "value": "C, C++, Java, JavaScript, Algorithms, Data Structures, HTML, CSS, NodeJS, Vim, Linux, Bash, Python"
+        }
+      ],
+      "description": "During this period, I participated in training programs conducted by the company, where I learned various technologies and programming languages. Through these trainings, I gained foundational knowledge of many popular technologies and languages."
+    }
+  ],
+  "projects": [
+    {
+      "title": "SBM",
+      "details": [
+        {
+          "label": "Type",
+          "value": "Web Application"
+        },
+        {
+          "label": "Stack",
+          "value": "Micro-services, TypeScript, NodeJS, NestJS, ReactJS, PostgreSQL, Keycloak"
+        },
+        {
+          "label": "Development Team",
+          "value": "around 10 developers"
+        }
+      ],
+      "description": "The project is designed for managing staff, documentation, tasks, and other operations in large construction companies or corporations. It includes features such as task management, a messenger, an integrated calendar, and workflow for document approvals, including contracts and supplementary agreements. The application relies on a substantial relational database with over 150 tables."
+    },
+    {
+      "title": "Global Onboarding",
+      "details": [
+        {
+          "label": "Type",
+          "value": "Web Application"
+        },
+        {
+          "label": "Stack",
+          "value": "TypeScript, NodeJS, NestJS, ReactJS, Micro-services, PostgreSQL, Azure Service Bus"
+        },
+        {
+          "label": "Development Team",
+          "value": "around 15 developers"
+        }
+      ],
+      "description": "This is a web application for recruiters and candidates designed to streamline the onboarding process of new employees. It includes features such as forms for collecting personal and general information from candidates, document uploading and signing, and integration with other services via Azure Service Bus."
+    },
+    {
+      "title": "Image API library",
+      "details": [
+        {
+          "label": "Type",
+          "value": "Npm package"
+        },
+        {
+          "label": "Stack",
+          "value": "Typescript, NodeJS"
+        },
+        {
+          "label": "Development Team",
+          "value": "2 developers"
+        }
+      ],
+
+      "description": "This is an SDK for a well-known company that is focused on image processing and also provides APIs. It supports a variety of image operations, including background removal, brightness adjustment, photo upscaling, text-to-image generation, and more. The code was written with attention to quality and includes well-prepared documentation and usage examples."
+    },
+    {
+      "title": "AD Topus",
+      "details": [
+        {
+          "label": "Type",
+          "value": "Web Application"
+        },
+        {
+          "label": "Stack",
+          "value": "JavaScript, Typescript, NodeJS, Angular2, Facebook Marketing API, IBM Watson API"
+        },
+        {
+          "label": "Development Team",
+          "value": "3 developers"
+        }
+      ],
+      "description": "This web application was integrated with Facebook Marketing APIs and IBM Watson API. It provided an easy-to-use interface for creating Facebook ads, including useful predictions and suggestions for selected images and titles."
+    },
+    {
+      "title": "win.gg",
+      "details": [
+        {
+          "label": "Type",
+          "value": "Web Application"
+        },
+        {
+          "label": "Stack",
+          "value": "Micro-services, Apache Kafka, ElasticSearch, JavaScript, NodeJS, Express, ReactJS, HTML, CSS, MongoDB"
+        },
+        {
+          "label": "Development Team",
+          "value": "around 10 developers"
+        }
+      ],
+      "description": "This was a web application consisting of more than 50 services communicating with each other via the Apache Kafka message broker. It was designed as an Esports gaming portal, providing calculated statistics, predictions, news, and more."
+    },
+    {
+      "title": "author.am",
+      "details": [
+        {
+          "label": "Type",
+          "value": "Web Application"
+        },
+        {
+          "label": "Stack",
+          "value": "JavaScript, NodeJS, Express, Mustache, HTML, CSS, MongoDB"
+        },
+        {
+          "label": "Development Team",
+          "value": "Independently implemented"
+        }
+      ],
+      "description": "The website was developed for creative individuals who wanted to share their work publicly. It included features such as posting poems and essays, participating in competitions, collaborating on book writing, an admin panel, an integrated book reader, and more."
+    },
+    {
+      "title": "Ebook Maker",
+      "details": [
+        {
+          "label": "Type",
+          "value": "Web Application"
+        },
+        {
+          "label": "Stack",
+          "value": "JavaScript, NodeJS, Express, EJS, Google Cloud SDK, ImageMagick, PostgreSQL, Prisma"
+        },
+        {
+          "label": "Development Team",
+          "value": "Independently implemented"
+        }
+      ],
+      "description": "It is a small web application that processes scanned PDF books by extracting text and providing a user-friendly interface for manual corrections. After corrections, eBooks can be automatically generated in various formats such as EPUB, MOBI, or lightweight searchable PDF."
+    }
+  ]
 }

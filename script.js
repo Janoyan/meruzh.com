@@ -5,7 +5,7 @@ window.alwaysOpen = false;
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-  fetch('/data.json').then(async (response) => {
+  fetch(`/data.json?${Date.now()}`).then(async (response) => {
     const myData = await response.json();
     await loadApp(myData);
   });
@@ -20,13 +20,17 @@ async function loadApp(myData) {
   <video muted="muted" autoplay="autoplay" loop="loop" src="/images/bg.mp4"></video>
 </div>
   <div class="left-section">
-  <img class="avatar" src="/images/me.png"  onclick="navigateTo('/cv')">
-  <p class="name" onclick="navigateTo('/cv')">Meruzh Janoyan</p>
+  <img class="avatar" src="/images/me.png" >
+  <p class="name">Meruzh Janoyan</p>
   <p class="title">Senior Software Engineer</p>
   <div class="short-summary">
   <div class="ss-item">
     <p class="label">🌎 Location</p>
-    <p class="value">Yerevan, Armenia</p>
+    <p class="value">${myData.currentLocation}</p>
+  </div>
+  <div class="ss-item">
+    <p class="label">✉️ Email</p>
+    <p class="value">${myData.email}</p>
   </div>
   <div class="ss-item">
     <p class="label">👨🏻‍🎓Degree</p>
@@ -38,7 +42,7 @@ async function loadApp(myData) {
   </div>
   <div class="ss-item">
     <p class="label">🗂️ Projects Completed</p>
-    <p class="value">${myData.projects.length}</p>
+    <p class="value">${myData.projects.length}+</p>
   </div>
   <div class="ss-item">
     <p class="label">🏢 Companies worked</p>
@@ -56,7 +60,7 @@ async function loadApp(myData) {
   
   <div class="ss-item" style="border: none">
     <p class="label"></p>
-    <p class="value">JavaScript, TypeScript, NodeJS, NestJS, PostgrSQL, MongoDB, Micro-Services</p>
+    <p class="value">JavaScript, TypeScript, NodeJS, NestJS, PostgrSQL, Micro-Services</p>
   </div>
   
    </div>
@@ -65,9 +69,9 @@ async function loadApp(myData) {
   ${myData.publications.map((item) => item.hide ? '' : `
      <div class="feed-item" >
       <div class="author" >
-        <img class="avatar" src="/images/me.png" onclick="navigateTo('/cv')">
+        <img class="avatar" src="/images/me.png" >
         <div class="namedate">
-            <p class="name" onclick="navigateTo('/cv')">Meruzh Janoyan</p>
+            <p class="name" >Meruzh Janoyan</p>
         <p class="date" title="${dateFns.format(new Date(item.dateString), 'MMMM do, yyyy')}">${dateFns.formatDistanceToNow(new Date(item.dateString), { addSuffix: true })}</p>    
 </div>
 
@@ -129,10 +133,10 @@ function addAuthorInfo() {
 
   const authorInfoDiv = lang === 'hy' ? `
     <div id="author-info-container">
-      <p>Հեղինակ՝ <a href="/cv"><img src="/images/jan.jpeg">Մերուժ Ջանոյան</a>, հրապարակվել է ${yearDiff > 0 ? diffTextArm : `${formattedDate}`}</p>
+      <p>Հեղինակ՝ <a href="/"><img src="/images/jan.jpeg">Մերուժ Ջանոյան</a>, հրապարակվել է ${yearDiff > 0 ? diffTextArm : `${formattedDate}`}</p>
     </div>` :
     `<div id="author-info-container">
-    <p>Written by <a href="/cv"><img src="/images/jan.jpeg">Meruzh Janoyan</a> ${yearDiff > 0 ? diffText : `on ${formattedDate}`}</p>
+    <p>Written by <a href="/"><img src="/images/jan.jpeg">Meruzh Janoyan</a> ${yearDiff > 0 ? diffText : `on ${formattedDate}`}</p>
   </div>`;
 
   const hasLinkedinLink = document.querySelector('div.linkedin > iframe');

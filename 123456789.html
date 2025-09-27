@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meruzh Janoyan's CV</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="books.author"/>
+    <meta name="title" content="Meruzh Janoyan's CV"/>
+    <meta property="og:title" content="Meruzh Janoyan's CV"/>
+    <meta name="description" content="Meruzh Janoyan's CV"/>
+    <meta property="og:description" content="Meruzh Janoyan's CV"/>
+    <meta property="og:url" content="https://meruzh.com"/>
+    <meta property="al:web:url" content="https://meruzh.com"/>
+    <meta property="og:image" content="/images/me.png"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Meruzh Janoyan's CV"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description" content="Meruzh Janoyan's CV"/>
+    <meta name="twitter:image:src" content="/images/me.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="en-us">
+
+    <link rel="icon" href="/images/jan.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="/cv.css?jan_v=1758730346">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/4.1.0/cdn.min.js" integrity="sha512-bz58Sg3BAWMEMPTH0B8+pK/+5Qfqq6b2Ho2G4ld12x4fiUVqpY8jSbN/73qpBQYFLU4QnKVL5knUm4uqcJGLVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            rel="stylesheet"
+    />
+</head>
+<body></body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        fetch(`/data.json?${Date.now()}`).then(async (response) => {
+            const myData = await response.json();
+            await loadCV(myData);
+        });
+    });
+
+
+    function loadCV(myData) {
+        document.body.innerHTML =
+`
+<div class="cv-container">
+    <div class="version">updated on ${dateFns.format(new Date(), 'MMMM, yyyy')}</div>
+    <div class="cv-header">
+        <div class="cv-picture">
+            <img src="images/me.png"    >
+        </div>
+        <div class="cv-details">
+            <h1 class="cv-name">Meruzh Janoyan</h1>
+            <div class="cv-details-item">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <p>${myData.currentLocation}</p>
+            </div>
+            <div class="cv-details-item">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                <p>${myData.phone}</p>
+            </div>
+            <div class="cv-details-item">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <p>${myData.email}</p>
+            </div>
+            <div class="cv-details-item">
+                <i class="fa-solid fa-link" aria-hidden="true"></i>
+                <a href="https://${myData.website}">${myData.website}</a>
+            </div>
+            <div class="cv-details-item together">
+                <i class="fa-solid fa-mars" aria-hidden="true"></i>
+                <p>${myData.gender}</p>
+                <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+                <p>${myData.dob}</p>
+                <i class="fa-solid fa-earth-americas" aria-hidden="true"></i>
+                <p>${myData.nationality}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cv-divider">
+        <div class="cv-divider-text">Summary</div>
+        <div class="cv-divider-line"></div>
+    </div>
+
+    <div class="work-experience">
+     <div class="cv-company-item">
+      <div class="description main-summary">I am a senior software engineer with <b>${dateFns.formatDistance(new Date(myData.careerStartDate), new Date, {addSuffix: false})}</b> of experience, currently focused on web development, particularly back-end development. My primary tech stack includes <b>TypeScript, Node.js, NestJS, PostgreSQL, and microservices architecture</b>. I have worked in <b>${myData.companies.length} companies</b> on more than <b>${myData.projects.length} projects</b>.</div>
+     </div>
+    </div>
+
+    <div class="cv-divider">
+        <div class="cv-divider-text">Work Experience</div>
+        <div class="cv-divider-line"></div>
+    </div>
+    <div class="work-experience">
+     ${myData.companies.sort((a, b) => a.startDate > b.startDate ? -1 : 1).map(company => `
+     <div class="cv-company-item">
+     <div class="header">
+           <div class="fromto">
+               <p>${company.endDate ? '' : 'Since '}${dateFns.format(new Date(company.startDate), "MMMM yyyy")}</p>
+               <p>${company.endDate ? '-' : ''}</p>
+               <p>${company.endDate ? dateFns.format(new Date(company.endDate), "MMMM yyyy") : ''}</p>
+               <p style="color: #6B6B6B">(${dateFns.formatDistance(new Date(company.startDate), new Date(company.endDate ?? new Date()))})</p>
+           </div>
+           <p class="name"><i class="fa-solid fa-building" aria-hidden="true"></i>${company.companyName}</p>
+      </div>
+      <div class="title">${company.title}</div>
+      <div class="description">${company.description}</div>
+      <div class="details">
+      ${company.details.map((detail) => `
+      <div class="details-item">
+          <p class="label">${detail.label}</p>
+          <p class="value">${detail.value}</p>
+      </div>
+      `).join('\n')}
+      </div>
+     </div>
+
+     `).join('\n')}
+    </div>
+    <div class="cv-divider">
+        <div class="cv-divider-text">Education and Trainings</div>
+        <div class="cv-divider-line"></div>
+    </div>
+
+        <div class="work-experience">
+     ${myData.educationAndTrainings.sort((a, b) => a.startDate > b.startDate ? -1 : 1).map(education => `
+     <div class="cv-company-item">
+     <div class="header">
+           <div class="fromto">
+               <p>${education.endDate ? '' : 'Since '}${dateFns.format(new Date(education.startDate), "MMMM yyyy")}</p>
+               <p>${education.endDate ? '-' : ''}</p>
+               <p>${education.endDate ? dateFns.format(new Date(education.endDate), "MMMM yyyy") : ''}</p>
+           </div>
+           <p class="name"><i class="fa-solid fa-user-graduate" aria-hidden="true"></i>${education.companyName}</p>
+      </div>
+      <div class="title">${education.title}</div>
+      <div class="description">${education.description}</div>
+      <div class="details">
+      ${education.details.map((detail) => `
+      <div class="details-item">
+          <p class="label">${detail.label}</p>
+          <p class="value">${detail.value}</p>
+      </div>
+      `).join('\n')}
+      </div>
+     </div>
+
+     `).join('\n')}
+    </div>
+
+    <div class="cv-divider">
+        <div class="cv-divider-text">Language Skills</div>
+        <div class="cv-divider-line"></div>
+    </div>
+
+    <div class="language-skills">
+    <div class="language-skills-item">
+        <div class="header">
+            <div class="label">Armenian</div>
+            <div class="value native">Native</div>
+        </div>
+        <div class="description">Native proficiency</div>
+    </div>
+    <div class="language-skills-item">
+        <div class="header">
+            <div class="label">English</div>
+            <div class="value c">C1</div>
+        </div>
+        <div class="description">I am able to communicate fluently in English. I recently passed the IELTS test and received an overall band score of 7.5, which is equivalent to C1 level.</div>
+    </div>
+    <div class="language-skills-item">
+        <div class="header">
+            <div class="label">Russian</div>
+            <div class="value b">B1</div>
+        </div>
+        <div class="description">I can understand and communicate in Russian.</div>
+    </div>
+    </div>
+
+    <div class="cv-divider">
+        <div class="cv-divider-text">Projects</div>
+        <div class="cv-divider-line"></div>
+    </div>
+
+    <div class="work-experience">
+     ${myData.projects.map(project => `
+     <div class="cv-company-item">
+      <div class="title">${project.title}</div>
+      <div class="description">${project.description}</div>
+      <div class="details">
+      ${project.details.map((detail) => `
+      <div class="details-item">
+          <p class="label">${detail.label}</p>
+          <p class="value">${detail.value}</p>
+      </div>
+      `).join('\n')}
+      </div>
+     </div>
+
+     `).join('\n')}
+    </div>
+
+    <div class="cv-divider">
+        <div class="cv-divider-text">Publications</div>
+        <div class="cv-divider-line"></div>
+    </div>
+
+
+    <div class="work-experience">
+     ${myData.publications.filter((item) => !item.hide && item.type==='article').map(publication => `
+     <div class="cv-company-item">
+          <div class="header">
+           <div class="fromto">
+               <p>${publication.dateString ? dateFns.format(new Date(publication.dateString), "MMMM yyyy") : ''}</p>
+           </div>
+      </div>
+      <div class="title">${publication.title}</div>
+      <div class="description">${publication.description}</div>
+      <a class="link" href="https://meruzh.com${publication.link}" target="_blank"><i class="fa-solid fa-link" aria-hidden="true"></i>https://meruzh.com${publication.link}</a>
+     </div>
+     `).join('\n')}
+    </div>
+
+</div>
+`;
+    }
+</script>
+</html>

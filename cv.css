@@ -1,0 +1,213 @@
+.cv-container {
+    max-width: 1000px;
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cv-header {
+    display: flex;
+    align-items: center;
+}
+
+.cv-header div {
+    margin-left: 20px;
+}
+
+.cv-picture {
+    width: 200px;
+}
+
+.cv-picture img {
+    max-width: 100%;
+}
+
+i {
+    color: #add1fa;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.cv-details-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.cv-details-item p, .cv-details-item a {
+    margin: 10px 0;
+}
+
+.cv-details-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.cv-details-item.together p {
+    margin-right: 10px;
+}
+
+.cv-divider {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.cv-divider .cv-divider-line {
+    height: 2px;
+    width: 65%;
+    background-color: #add1fa;
+}
+
+.cv-divider .cv-divider-text {
+    text-transform: uppercase;
+    color: #4875a8;
+    font-style: italic;
+    margin-right: 10px;
+}
+
+.work-experience {
+    width: 100%;
+}
+
+.cv-company-item .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cv-company-item .name {
+    color: #4875a8;
+    font-weight: bold;
+}
+
+.cv-company-item .fromto {
+    display: flex;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: none;
+}
+
+.cv-company-item .fromto p {
+    margin-right: 5px;
+}
+
+.cv-company-item .description {
+    width: 80%;
+    display: block;
+    margin: auto;
+    font-size: 16px;
+    white-space: break-spaces;
+}
+
+.cv-company-item .link {
+    width: 80%;
+    display: block;
+    margin: 10px auto;
+    font-size: 12px;
+    text-decoration: none;
+    color: #4875a8;
+}
+
+.cv-company-item .link i {
+    font-size: 12px;
+}
+
+.cv-company-item .title {
+    width: 80%;
+    display: block;
+    margin: 10px auto;
+    font-size: 20px;
+}
+
+.cv-company-item .details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+    margin: 10px auto;
+}
+
+.cv-company-item .details .details-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.cv-company-item .details .details-item .label {
+    color: #add1fa;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin: 2px 5px;
+}
+
+.cv-company-item .details .details-item .value {
+    color: #4875a8;
+    margin: 2px 5px;
+    font-size: 12px;
+    border: 1px dotted;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: monospace;
+}
+
+.language-skills {
+    display: flex;
+}
+
+.language-skills-item {
+    margin: 20px;
+    width: 80%;
+}
+
+.language-skills-item .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.language-skills-item .header .label {
+    font-size: 20px;
+}
+
+.language-skills-item .header .value {
+    padding: 10px;
+    background: gray;
+    color: white;
+    border-radius: 5px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.language-skills-item .header .value.native {
+    background: #4875a8;
+    color: white;
+}
+
+.language-skills-item .header .value.c {
+    background: rgba(72, 117, 168, 0.8);
+    color: white;
+}
+
+.language-skills-item .header .value.b {
+    background: rgba(72, 117, 168, 0.45);
+    color: white;
+}
+
+.main-summary {
+    line-height: 27px;
+    margin-bottom: 100px !important;
+    font-family: none;
+    font-size: 18px !important;
+}
+
+.version {
+    position: absolute;
+    font-size: 6px;
+    top: 0;
+    right: 0;
+    color: gray;
+}
