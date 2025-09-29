@@ -66,7 +66,7 @@ async function loadApp(myData) {
    </div>
   </div>
   <div class="right-section">
-  ${myData.publications.map((item) => item.hide ? '' : `
+  ${myData.publications.sort((a, b) => a.dateString > b.dateString ? -1 : 1).map((item, itemIndex) => item.hide ? '' : `
      <div class="feed-item" >
       <div class="author" >
         <img class="avatar" src="/images/me.png" >
@@ -78,9 +78,14 @@ async function loadApp(myData) {
        </div>
        <p class="title">${item.title}</p>
        <p class="description">${item.description}</p>
-       <img class="cover" src="${item.image}"/>
+       <div class="cover-wrapper" id="wrapper-${itemIndex}">
+                ${item.type === 'video' ? `<div class="dark"></div><i onclick="playVideo('wrapper-${itemIndex}', '${item.src}')" class="fa-solid fa-play play-button"></i>`: ''}
+               
+        
+              <img class="cover" src="${item.image}"/>
+        </div>
        <div class="actions">
-       <a class="read" href="${item.link}">READ MORE</a>
+       ${item.link ? `<a class="read" href="${item.link}">READ MORE</a>`: ''}
         </div>
 
     </div>
@@ -170,8 +175,8 @@ function addLinkForOtherLanguage(myData) {
   }
   const wrapperElement = document.querySelector('#container > .wrapper');
 
-  const armenianItem = myData.publications.find((i) => getArticlePath(menuItem.armenianLink) === getArticlePath(i.link) );
-  const englishItem = myData.publications.find((i) => getArticlePath(menuItem.englishLink) === getArticlePath(i.link) );
+  const armenianItem = myData.publications.find((i) => i.link && getArticlePath(menuItem.armenianLink) === getArticlePath(i.link) );
+  const englishItem = myData.publications.find((i) => i.link && getArticlePath(menuItem.englishLink) === getArticlePath(i.link) );
   if (englishItem) {
     wrapperElement.innerHTML = `<div style="background: white" class="other-link"><img src="${englishItem.image}"><a href="${englishItem.link}">Read in English</a></div>${wrapperElement.innerHTML}`
   }
@@ -199,6 +204,11 @@ function formatArmDate(date) {
   ];
 
   return `${monthNames[date.getMonth()]} ${day}-ին, ${year}թ.`;
+}
+
+function playVideo(wrapperId, videoSrc) {
+  const wrapperElement = document.getElementById(wrapperId);
+  wrapperElement.innerHTML = `<video muted loop autoplay src="${videoSrc}"></video>`;
 }
 
 

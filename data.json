@@ -10,6 +10,190 @@
   "dob": "March 23, 1992",
   "publications": [
     {
+      "title": "Merge sort",
+      "type": "video",
+      "description": "",
+      "image": "/images/merge_sort.png",
+      "src": "/videos/merge_sort.mp4",
+      "dateString": "2022-03-14"
+    },
+    {
+      "title": "JWT",
+      "type": "video",
+      "description": "",
+      "image": "/images/jwt.png",
+      "src": "/videos/jwt.m4v",
+      "dateString": "2022-03-13"
+    },
+    {
+      "title": "GIT",
+      "type": "video",
+      "description": "Squash",
+      "image": "/images/git-squash.png",
+      "src": "/videos/git-squash.m4v",
+      "dateString": "2022-03-12"
+    },
+    {
+      "title": "Insertion Sort",
+      "type": "video",
+      "description": "",
+      "image": "/images/insertion_sort.png",
+      "src": "/videos/insertion_sort.m4v",
+      "dateString": "2021-11-10"
+    },
+    {
+      "title": "Nullish operators",
+      "type": "video",
+      "description": "",
+      "image": "/images/nullish.png",
+      "src": "/videos/nullish.m4v",
+      "dateString": "2021-11-01"
+    },
+    {
+      "title": "Javascript hoisting",
+      "type": "video",
+      "description": "",
+      "image": "/images/hoisting.png",
+      "src": "/videos/hoisting.m4v",
+      "dateString": "2021-10-24"
+    },
+    {
+      "title": "Working with promises",
+      "type": "video",
+      "description": "",
+      "image": "/images/promise_methods.png",
+      "src": "/videos/promise_methods.m4v",
+      "dateString": "2021-10-13"
+    },
+    {
+      "title": "UUID",
+      "type": "video",
+      "description": "",
+      "image": "/images/uuid.png",
+      "src": "/videos/uuid.m4v",
+      "dateString": "2021-09-23"
+    },
+    {
+      "title": "GIT",
+      "type": "video",
+      "description": "Cherry-pick",
+      "image": "/images/git-cherry-pick.png",
+      "src": "/videos/git-cherry-pick.m4v",
+      "dateString": "2021-09-18"
+    },
+    {
+      "title": "Shell commands",
+      "type": "video",
+      "description": "ls",
+      "image": "/images/shellls.png",
+      "src": "/videos/shell-1.m4v",
+      "dateString": "2021-09-12"
+    },
+    {
+      "title": "Database transaction",
+      "type": "video",
+      "description": "",
+      "image": "/images/transaction.png",
+      "src": "/videos/transaction.m4v",
+      "dateString": "2021-08-18"
+    },
+    {
+      "title": "Generics in Typescript",
+      "type": "video",
+      "description": "",
+      "image": "/images/generics.png",
+      "src": "/videos/generics 11.43.43.m4v",
+      "dateString": "2021-08-12"
+    },
+    {
+      "title": "OAuth 2.0",
+      "type": "video",
+      "description": "OAuth 2.0 Implicit Grant",
+      "image": "/images/implicit.png",
+      "src": "/videos/oauth2 implicit.m4v",
+      "dateString": "2021-08-04"
+    },
+    {
+      "title": "OAuth 2.0",
+      "type": "video",
+      "description": "OAuth 2.0 Authorization Code Grant",
+      "image": "/images/oauthcode.png",
+      "src": "/videos/oauth2 Authcode.m4v",
+      "dateString": "2021-07-31"
+    },
+    {
+      "title": "Design Patterns",
+      "type": "video",
+      "description": "Observer",
+      "image": "/images/ob.png",
+      "src": "/videos/ob.m4v",
+      "dateString": "2021-06-16"
+    },
+    {
+      "title": "Design Patterns",
+      "type": "video",
+      "description": "Facade",
+      "image": "/images/fc.png",
+      "src": "/videos/fc.m4v",
+      "dateString": "2021-05-28"
+    },
+    {
+      "title": "Design Patterns",
+      "type": "video",
+      "description": "Factory Method.",
+      "image": "/images/fm.png",
+      "src": "/videos/fm.m4v",
+      "dateString": "2021-05-15"
+    },
+    {
+      "title": "Design Patterns",
+      "type": "video",
+      "description": "",
+      "image": "/images/design-pattern.png",
+      "src": "/videos/dpa.m4v",
+      "dateString": "2021-05-08"
+    },
+    {
+      "title": "Clean Code",
+      "type": "video",
+      "description": "Part 2.",
+      "image": "/images/cleancode.png",
+      "src": "/videos/clean2.m4v",
+      "dateString": "2021-05-01"
+    },
+    {
+      "title": "Clean Code",
+      "type": "video",
+      "description": "Part 1.",
+      "image": "/images/cleancode.png",
+      "src": "/videos/cleancode1.m4v",
+      "dateString": "2021-04-23"
+    },
+    {
+      "title": "Apache Kafka",
+      "type": "video",
+      "description": "",
+      "image": "/images/kafka.png",
+      "src": "/videos/kafka.m4v",
+      "dateString": "2021-04-07"
+    },
+    {
+      "title": "Server Side Rendering",
+      "type": "video",
+      "description": "Advantages of server side rendering.",
+      "image": "/images/ssr.png",
+      "src": "/videos/ssr.m4v",
+      "dateString": "2021-03-31"
+    },
+    {
+      "title": "Search Engines",
+      "type": "video",
+      "description": "Always have helper scripts for search engines.",
+      "image": "/images/supermen.png",
+      "src": "/videos/x.m4v",
+      "dateString": "2021-03-17"
+    },
+    {
       "title": "ՏՏ Դատաստան",
       "type": "article",
       "description": "Ի հարգանքս բոլոր նրանց, ովքեր սիրով են կատարում իրենց գործը։",
