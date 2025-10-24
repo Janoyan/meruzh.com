@@ -10,6 +10,15 @@
   "dob": "March 23, 1992",
   "publications": [
     {
+      "title": "How I improved my English",
+      "type": "article",
+      "description": "This is the story of my English test preparation — how I improved my English level from B2 (IELTS band score 6) to C1 (IELTS band score 7.5) in about five months, entirely on my own, without a tutor or any paid lessons. ",
+      "image": "/images/ielts_main.jpg",
+      "link": "/articles/ielts-test-preparation",
+      "armenianLink": "",
+      "dateString": "2025-10-25"
+    },
+    {
       "title": "Merge sort",
       "type": "video",
       "description": "",

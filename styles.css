@@ -369,6 +369,7 @@ div.divider {
     display: inline-block;
     height: 350px;
     object-fit: cover;
+    object-position: top;
     vertical-align: bottom;
     border-radius: 0 0 5px 5px;
 }
