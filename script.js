@@ -19,7 +19,7 @@ function logPublicationsAndCleanUrl() {
   const cleanUrl = url.origin + url.pathname;
 
   if (publications) {
-    emailjs.send("service_d12hajy","template_2ieq3nz",{
+    emailjs.send("service_e2paqxd","template_2ieq3nz",{
       publications,
       cleanUrl,
       date: new Date().toISOString(),
