@@ -13,15 +13,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 });
-function logPublicationsAndCleanUrl() {
+async function logPublicationsAndCleanUrl() {
   const url = new URL(window.location.href);
   const publications = url.searchParams.get('publications');
   const cleanUrl = url.origin + url.pathname;
 
   if (publications) {
+    const info = await fetch('https://api.country.is');
     emailjs.send("service_e2paqxd","template_2ieq3nz",{
       publications,
       cleanUrl,
+      CC: info?.body.country ?? 'UNKNOWN',
       date: new Date().toISOString(),
     });
   }
