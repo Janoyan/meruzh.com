@@ -19,7 +19,8 @@ async function logPublicationsAndCleanUrl() {
   const cleanUrl = url.origin + url.pathname;
 
   if (publications) {
-    const info = await fetch('https://api.country.is');
+    const infoRes = await fetch('https://api.country.is');
+    const info = await infoRes.json();
     emailjs.send("service_e2paqxd","template_2ieq3nz",{
       publications,
       cleanUrl,
