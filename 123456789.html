@@ -44,6 +44,7 @@
 
 
     function loadCV(myData) {
+        myData.currentCvVersion = localStorage.getItem('currentCvVersion') || 0;
         document.body.innerHTML =
 `
 <div class="cv-container">
@@ -68,7 +69,7 @@
             </div>
             <div class="cv-details-item">
                 <i class="fa-solid fa-link" aria-hidden="true"></i>
-                <a href="https://${myData.website}">${myData.website}</a>
+                <a href="https://${myData.website}?showProfile=true&publications=${myData.currentCvVersion}">${myData.website}</a>
             </div>
             <div class="cv-details-item">
                 <i class="fa-solid fa-link" aria-hidden="true"></i>
@@ -180,7 +181,7 @@
     <div class="language-skills-item">
         <div class="header">
             <div class="label">Russian</div>
-            <div class="value b">B1</div>
+            <div class="value b">B2</div>
         </div>
         <div class="description">I can understand and communicate in Russian.</div>
     </div>
@@ -225,7 +226,7 @@
       </div>
       <div class="title">${publication.title}</div>
       <div class="description">${publication.description}</div>
-      <a class="link" href="https://meruzh.com${publication.link}" target="_blank"><i class="fa-solid fa-link" aria-hidden="true"></i>https://meruzh.com${publication.link}</a>
+      <a class="link" href="https://meruzh.com${publication.link}?showProfile=true&publications=${myData.currentCvVersion}" target="_blank"><i class="fa-solid fa-link" aria-hidden="true"></i>Link to ${publication.title}</a>
      </div>
      `).join('\n')}
     </div>

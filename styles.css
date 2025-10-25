@@ -518,3 +518,7 @@ div.divider {
     width: 100%;
     height: 100%;
 }
+
+.video-preloader {
+    position: absolute;
+}

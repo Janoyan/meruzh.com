@@ -5,6 +5,7 @@ window.alwaysOpen = false;
 
 
 document.addEventListener("DOMContentLoaded", async () => {
+  emailjs.init('5DlYgjbK0Mldwc-t_');
   fetch(`/data.json?${Date.now()}`).then(async (response) => {
     const myData = await response.json();
     await loadApp(myData);
@@ -12,8 +13,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 });
+function logPublicationsAndCleanUrl() {
+  const url = new URL(window.location.href);
+  const publications = url.searchParams.get('publications');
+  const cleanUrl = url.origin + url.pathname;
+
+  if (publications) {
+    emailjs.send("service_d12hajy","template_2ieq3nz",{
+      publications,
+      cleanUrl,
+      date: new Date().toISOString(),
+    });
+  }
+
+  window.history.replaceState({}, document.title, cleanUrl);
+}
 
 async function loadApp(myData) {
+  logPublicationsAndCleanUrl();
   document.body.innerHTML = `
   <div id="menu-container">
   <div class="tech-bg">
@@ -208,7 +225,29 @@ function formatArmDate(date) {
 
 function playVideo(wrapperId, videoSrc) {
   const wrapperElement = document.getElementById(wrapperId);
-  wrapperElement.innerHTML = `<video muted loop autoplay src="${videoSrc}"></video>`;
+  wrapperElement.style.height = '350px';
+
+  // Create preloader and video elements
+  const preloader = document.createElement('img');
+  preloader.className = 'video-preloader';
+  preloader.src = '/images/video-preloader.gif';
+
+  const video = document.createElement('video');
+  video.src = videoSrc;
+  video.muted = true;
+  video.loop = true;
+  video.autoplay = true;
+
+  // Add elements to wrapper
+  wrapperElement.innerHTML = '';
+  wrapperElement.appendChild(preloader);
+  wrapperElement.appendChild(video);
+
+  // Remove preloader once video starts playing
+  video.addEventListener('playing', () => {
+    preloader.remove();
+  });
+
 }
 
 
