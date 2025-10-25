@@ -24,7 +24,7 @@ async function logPublicationsAndCleanUrl() {
     emailjs.send("service_e2paqxd","template_2ieq3nz",{
       publications,
       cleanUrl,
-      CC: info?.body.country ?? 'UNKNOWN',
+      CC: info?.country ?? 'UNKNOWN',
       date: new Date().toISOString(),
     });
   }
