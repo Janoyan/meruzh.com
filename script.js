@@ -40,7 +40,7 @@ async function loadApp(myData) {
   <video muted="muted" autoplay="autoplay" loop="loop" src="/images/bg.mp4"></video>
 </div>
   <div class="left-section">
-  <img class="avatar" src="/images/me.png" >
+  <img class="avatar" src="/images/my-photo-1.jpg" >
   <p class="name">Meruzh Janoyan</p>
   <p class="title">Senior Software Engineer</p>
   <div class="short-summary">
@@ -89,7 +89,7 @@ async function loadApp(myData) {
   ${myData.publications.sort((a, b) => a.dateString > b.dateString ? -1 : 1).map((item, itemIndex) => item.hide ? '' : `
      <div class="feed-item" >
       <div class="author" >
-        <img class="avatar" src="/images/me.png" >
+        <img class="avatar" src="/images/my-photo-1.jpg" >
         <div class="namedate">
             <p class="name" >Meruzh Janoyan</p>
         <p class="date" title="${dateFns.format(new Date(item.dateString), 'MMMM do, yyyy')}">${dateFns.formatDistanceToNow(new Date(item.dateString), { addSuffix: true })}</p>    
