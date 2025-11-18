@@ -37,7 +37,6 @@ async function loadApp(myData) {
   document.body.innerHTML = `
   <div id="menu-container">
   <div class="tech-bg">
-  <video muted="muted" autoplay="autoplay" loop="loop" src="/images/bg.mp4"></video>
 </div>
   <div class="left-section">
   <img class="avatar" src="/images/my-photo-1.jpg" >
