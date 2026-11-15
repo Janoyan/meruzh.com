@@ -1,0 +1,27 @@
+.presentation {
+
+}
+
+.presentation_highlight {
+    position: relative;
+    background: rgba(255, 255, 62, 0.6);
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid black;
+    animation: pulse-scale 2s ease-in-out infinite;
+    box-shadow: #000000 2px 2px 9px 0px;
+
+    user-select: none;
+    z-index: 999;
+    white-space: nowrap; /* Keeps text from wrapping inside the box */
+}
+
+
+@keyframes pulse-scale {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+

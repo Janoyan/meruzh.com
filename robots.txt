@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /components
+Sitemap: https://meruzh.com/sitemapx.xml

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <title>Cybersecurity. Client side Limitations</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+    <meta property="og:site_name" content="meruzh.com"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2026-05-23T00:00:00.000Z"/>
+    <meta name="title" content="Cybersecurity. Client side Limitations"/>
+    <meta property="og:title" content="Cybersecurity. Client side Limitations"/>
+    <meta name="description"
+          content="The hacking experience that proved to me that client-side limitations cannot provide any real level of security"/>
+    <meta property="og:description"
+          content="The hacking experience that proved to me that client-side limitations cannot provide any real level of security"/>
+    <meta property="og:url" content="https://meruzh.com/articles/cybersecurity-fe-side-limitations"/>
+    <meta property="al:web:url" content="https://meruzh.com/articles/cybersecurity-fe-side-limitations"/>
+    <meta property="og:image" content="/components/cybersecurity-fe-side-limitations/cover.png"/>
+    <meta property="article:author" content="Meruzh Janoyan"/>
+    <meta name="author" content="Meruzh Janoyan"/>
+    <meta name="robots" content="index,follow,max-image-preview:large"/>
+    <meta name="referrer" content="unsafe-url"/>
+    <meta property="twitter:title" content="Cybersecurity. Client side Limitations"/>
+    <meta name="twitter:site" content=""/>
+    <meta property="twitter:description"
+          content="The hacking experience that proved to me that client-side limitations cannot provide any real level of security"/>
+    <meta name="twitter:image:src" content="/components/cybersecurity-fe-side-limitations/cover.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta http-equiv="content-language" content="en-us">
+
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
+
+    <link rel="icon" href="/images/jan.jpeg" type="image/jpeg">
+
+    <link rel="stylesheet" href="/styles.css?jan_v=1787586196">
+    <script src="/script.js?jan_v=1787586196"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    <style>
+
+
+        h1, h2 {
+            text-transform: none !important;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container" class="active">
+    <div class="wrapper">
+        <h1>Cybersecurity. Client side Limitations</h1>
+
+        <p>
+Client side limitations are often done due to lack of enough time to implement the feature correctly. Usually those limitations are done as a quick solution and they supposed to be temporary ones as well.
+
+To give some more context to non-engineers let me quickly explain what I mean by “Client side limitations”.
+
+So web applications usually have two main parts where they are running:  server and client.
+You can imagine that there is one server and as many clients as the web app has users.
+Server contains the part of application code which is not publicly visible and which does all the important work with databases.
+
+On the other hand, client side is the part of the web application that is being executed on user’s devices. The entire code of client side is visible to anyone. Although, usually the code is transformed so it is not readable, anyway it is possible to inspect and understand.
+
+So by saying “Client side limitations” I mean adding a logic for restrictions in the part of the web application that is executed on user’s devices and it’s code is visible to anyone.
+        </p>
+
+        <div class="divider">***</div>
+
+        <p>
+Let me tell you a hacking experience that is very relevant here.
+
+My cousin who is living in another country once asked me to buy a football tickets for him and his friends. The match was going to happen in my country and only my country’s citizens could buy tickets. Such matches were happening here very rarely, maybe once in several years so there definitely would not be enough tickets for everyone.
+
+When he asked, it was several months before the match, and the tickets were not on sale yet. So I contacted the Football Federation and asked when they were going to start selling tickets for the match. They said they would start selling them about one month before the match. They also said that they were the only official providers of tickets.
+
+When it was almost a month before the match, I started monitoring their website to buy tickets as soon as they went on sale. I wanted to get good seats in good sections. They didn’t have a notification system—only a Facebook page where they were supposed to post updates, but I couldn’t follow it because I didn’t have a Facebook account. So I checked the website every morning.
+
+On the day ticket sales started, I was really desperate. I had put in so much effort to get those tickets. I had registered on their website, completed passport verification, stayed in touch with the federation, and checked the website every day. And then, when it was finally time to buy the tickets, the website wasn’t working because of the heavy traffic. It took minutes to load a page, and it was impossible to select seats and complete the purchase.
+        </p>
+
+        <div class="divider">***</div>
+
+        <p>
+I kept trying to buy the tickets, but I had no success. The system was overloaded. After several hours, the federation posted an update saying they had implemented a special queue system and that it would now be possible to buy tickets—you just had to wait your turn.
+
+From then on, whenever you opened their website, you would just see a message saying you were in the queue—and nothing else. There was no queue number and no estimated waiting time. After waiting for an hour without any updates, I started to feel that something was wrong. <span class="hacker-text">So I began inspecting their code to understand how the queue system worked.
+
+It turned out that they hadn’t implemented any real queue system—it was just a connection limit. In simple terms, whenever the number of active users reached a certain threshold, they wouldn’t allow any more users to access the website. It was an unfair solution, and I felt very angry.
+
+The good thing was that they had implemented this limitation in a very naive way—it was done on the client side. The server would send an event through a WebSocket, something like ‘limit reached,’ and the client application would then redirect users to a page displaying the message ‘You are in the queue.’
+
+            Simply overwriting the JavaScript file where that limitation was implemented was enough to work around the logic. I just modified their code and removed the redirection part.</span>
+
+And that was it—the application started working smoothly, at least for me and only on my device. I managed to buy the tickets I needed and was happy that I could fulfill my cousin’s request.
+        </p>
+
+        <div class="divider">***</div>
+        <p>
+This experience proved to me once again that client-side limitations cannot provide any real level of security, and it is definitely not advisable to use them, even as temporary solutions.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

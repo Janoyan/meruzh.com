@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand-Drawn Cookie Consent</title>
+
+    <script type="module" src="https://unpkg.com/wired-elements?module"></script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .full-page-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        wired-card {
+            background: white;
+            padding: 30px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .options-group {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px dashed #999;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .show { display: flex !important; }
+
+        /* Custom styling for the dialog */
+        wired-dialog {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dialog-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="full-page-wrapper">
+    <wired-card elevation="3">
+        <h2 style="margin-top:0">🍪 Cookie կարգավորումներ</h2>
+        <p>Մենք օգտագործում ենք cookie հիշողությունը կայքը բարելավելու համար։ Համաձա՞յն եք դրա հետ</p>
+
+        <div id="settings-panel" class="options-group">
+            <wired-checkbox checked disabled>Կայքի անխափան աշխատանք</wired-checkbox>
+            <wired-checkbox>Վարքագծի հետևում</wired-checkbox>
+            <wired-checkbox>Գովազդներով թիրախավորում</wired-checkbox>
+        </div>
+
+        <div class="button-group">
+            <wired-button id="btn-accept" elevation="3" style="background: #d4edda;">Ընդունել բոլորը</wired-button>
+            <wired-button id="btn-settings">Կարգավորել</wired-button>
+            <wired-button id="btn-reject">Միայն հիմնականները</wired-button>
+        </div>
+    </wired-card>
+</div>
+
+<wired-dialog id="status-dialog" elevation="5">
+    <div class="dialog-content">
+        <h3 id="dialog-msg">Շնորհակալություն</h3>
+        <p>Ձեր կարգավորումները հաջողությամբ պահպանվել են։</p>
+        <wired-button id="btn-close-dialog">Լավ</wired-button>
+    </div>
+</wired-dialog>
+
+<script>
+    const settingsBtn = document.getElementById('btn-settings');
+    const settingsPanel = document.getElementById('settings-panel');
+    const dialog = document.getElementById('status-dialog');
+    const dialogMsg = document.getElementById('dialog-msg');
+    const closeDialog = document.getElementById('btn-close-dialog');
+
+    // Toggle Settings
+    settingsBtn.addEventListener('click', () => {
+        settingsPanel.classList.toggle('show');
+        window.dispatchEvent(new Event('resize'));
+    });
+
+    // Show Dialog Function
+    const showPopup = (text) => {
+        dialogMsg.innerText = text;
+        dialog.open = true;
+    };
+
+    // Close Dialog
+    closeDialog.addEventListener('click', () => {
+        dialog.open = false;
+    });
+
+    // Button Listeners
+    document.getElementById('btn-accept').addEventListener('click', () => showPopup('Համաձայն եմ բոլորի հետ'));
+    document.getElementById('btn-reject').addEventListener('click', () => showPopup('Միայն հիմնականները'));
+</script>
+
+</body>
+</html>
